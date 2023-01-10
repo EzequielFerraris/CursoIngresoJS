@@ -5,5 +5,5 @@ function mostrar()
 {
 	let msj = prompt("Ingrese un nombre: ");
 	alert(msj);
-}
+};
 

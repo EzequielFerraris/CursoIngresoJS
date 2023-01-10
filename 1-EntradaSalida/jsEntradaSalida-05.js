@@ -6,5 +6,5 @@ function mostrar()
 	let nombre = txtIdNombre.value;
 	let edad = txtIdEdad.value;
 	alert("Usted se llama " + nombre + " y tiene " + edad + " años");
-}
+};
 
