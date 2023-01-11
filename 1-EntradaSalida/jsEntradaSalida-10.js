@@ -4,7 +4,9 @@ Transformarlo a entero (parseInt), luego
 mostrar el importe con un Descuento del 25 %
 en el cuadro de texto "RESULTADO"*/
 function mostrarAumento() {
-	let importe = parseInt(txtIdImporte.value);
+
+	let importe = parseInt(document.getElementById("txtIdImporte").value);
 	let nuevoImporte = importe - (importe * 0.25);
-	txtIdResultado.value = nuevoImporte;
+	document.getElementById("txtIdResultado").value = nuevoImporte;
+	
 };
