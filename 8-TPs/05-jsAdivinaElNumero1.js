@@ -9,13 +9,15 @@ de no ser igual se debe informar si “falta…”  para llegar al número secre
 */
 let random;
 let contador;
-
+let max = 100;
+let min = 1;
 
 function comenzar()
 {
 	//Genero el número RANDOM entre 1 y 100
-  random = Math.floor(Math.random() * (100)) + 1;
+  random = Math.floor(Math.random() * (max - min)) + min;
   contador = 0;
+  document.getElementById("txtIdIntentos").value = 0;
 }
 
 function verificar()
