@@ -1,5 +1,5 @@
-var miTemporizador ;
-var contador=0;
+let miTemporizador ;
+let contador=0;
 
 function inicio()
 {

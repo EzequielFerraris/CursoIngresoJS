@@ -1,9 +1,9 @@
-var miTemporizador ;
-var contador=0;
+let miTemporizador;
+let contador=0;
 
 function inicio()
 {
-	alert("function inicio.");
+	alert("Función inicio.");
 	miTemporizador = setTimeout(SegundosEnElAire, 3000);
 	
 }//FIN DE LA FUNCIÓN inicio
@@ -17,7 +17,7 @@ function SegundosEnElAire() {
 
 function fin()
 {
-	alert("function fin.");
+	alert("Función fin.");
 	clearTimeout(miIntervalo);
 
 }//FIN DE LA FUNCIÓN fin

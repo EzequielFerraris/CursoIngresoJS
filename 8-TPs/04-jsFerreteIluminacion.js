@@ -11,55 +11,61 @@ function CalcularPrecio ()
 {
     let cantidad = parseInt(document.getElementById("txtIdCantidad").value);
     let marca = document.getElementById("Marca").value;
-    let precioBase = 35;
-    let resultado;
+    const PRECIO_BASE = 35;
+    let descuento;
+    let precioUnitario;
     let impuesto;
-
-        switch(cantidad) {        
-            case 5:
-                if(marca == "ArgentinaLuz") {
-                    resultado = (precioBase - precioBase * 0.4) * cantidad;
-                }
-                else {resultado = (precioBase - precioBase * 0.3) * cantidad;
-                };
-                break;
-            case 4:
-                if(marca == "ArgentinaLuz" || marca == "FelipeLamparas") {
-                    resultado = (precioBase - precioBase * 0.25) * cantidad;
-                } 
-                else{
-                    resultado = (precioBase - precioBase * 0.2) * cantidad;
-                };
+    let importeTotal;
+        switch(cantidad) {  
+            case 1:
+            case 2:
+                descuento = 0;
                 break;
             case 3:
                 if(marca == "ArgentinaLuz") {
-                    resultado = (precioBase - precioBase * 0.15) * cantidad;
+                    descuento = 0.15;
                 }
                 else if(marca == "FelipeLamparas"){
-                    resultado = (precioBase - precioBase * 0.1) * cantidad;
+                    descuento = 0.1;
                 }
                 else {
-                    resultado = (precioBase - precioBase * 0.05) * cantidad;
+                    descuento = 0.05;
                 }
                 break;
-            case 2:
-            case 1:
-                resultado = precioBase * cantidad;
+            case 4:
+                if(marca == "ArgentinaLuz" || marca == "FelipeLamparas") {
+                    descuento = 0.25;
+                } 
+                else{
+                    descuento = 0.2;
+                };
+                break;      
+            case 5:
+                if(marca == "ArgentinaLuz") {
+                    descuento = 0.4;
+                }
+                else {
+                    descuento = 0.3;
+                };
                 break;
             default: 
-                resultado = (precioBase - precioBase * 0.5) * cantidad;
+                descuento = 0.5;
                 break;     
         };
 
-    if(resultado > 120) {
-        impuesto = resultado * 0.1;
-        resultado += impuesto;
-        document.getElementById("txtIdprecioDescuento").value = resultado;
+        precioUnitario = PRECIO_BASE - (PRECIO_BASE * descuento);
+        importeTotal = precioUnitario * cantidad;
 
+    if(importeTotal > 120) {
+        impuesto = importeTotal * 0.1;
+        importeTotal += impuesto;
         alert(`Usted pago $${impuesto} de IIBB.`);
+        alert(`El importe total a pagar es de $${importeTotal}`);
+        document.getElementById("txtIdprecioDescuento").value = precioUnitario;
     }
     else {
-        document.getElementById("txtIdprecioDescuento").value = resultado;
+        document.getElementById("txtIdprecioDescuento").value = precioUnitario;
+        alert(`El importe total a pagar es de $${importeTotal}`);
     };
 
 }

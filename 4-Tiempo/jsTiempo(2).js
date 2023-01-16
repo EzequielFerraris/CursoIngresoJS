@@ -1,9 +1,9 @@
-var miIntervalo ;
+let miIntervalo ;
 
 
 function inicio()
 {
-	alert("function inicio.");
+	alert("Función inicio.");
 	miIntervalo = setInterval(SegundosEnElAire, 3000);
 	
 }//FIN DE LA FUNCIÓN inicio
@@ -16,7 +16,7 @@ function SegundosEnElAire() {
 
 function fin()
 {
-	alert("function fin.");
+	alert("Función fin.");
 	clearTimeout(miIntervalo);
 
 }//FIN DE LA FUNCIÓN fin
