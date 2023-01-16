@@ -3,10 +3,18 @@ Al presionar el botón pedir un sexo
 'f' para femenino, 'm' para masculino.*/
 function mostrar()
 {
-	var sexoIngresado;
-	sexoIngresado = prompt("ingrese f ó m .");
+	let clave = true;
+	while(clave) {
+		let sexo = prompt("Por favor, ingrese su sexo ('f' para femenino y 'm' para masculino)");
+		if (sexo == "f" || sexo == "m") {
+			alert(`Se ha ingresado \"${sexo}\". Muchas gracias.`)
+			document.getElementById("txtIdSexo").value = sexo;
+			clave = false;
+		}
+		else {
+			alert("El dato ingresado no es válido. Inténtelo nuevamente.")
+		};
+	};
 
 
-
-	txtIdSexo.value=sexoIngresado;
 }//FIN DE LA FUNCIÓN

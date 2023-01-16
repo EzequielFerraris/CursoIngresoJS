@@ -6,7 +6,7 @@ let tiempoFinal;
 
 function inicio()
 {
-	var random = Math.floor(Math.random()*10000 )+2000;
+	let random = Math.floor(Math.random()*10000 )+2000;
 	//alert(random);
 	alert("function inicio.");
 	miTemporizador = setTimeout(SegundosEnElAire, random);
@@ -14,7 +14,6 @@ function inicio()
 }//FIN DE LA FUNCIÓN inicio
 
 function SegundosEnElAire() {
-
 
 	document.getElementById("secreto").style.visibility="visible"; 
  	tiempoInicio=  new Date();
@@ -46,5 +45,4 @@ function ContarMilisegundos()
 			alert("Te quedastes dormido???: "+resultado);
 		}
 
-	
 }//FIN DE LA FUNCIÓN fin

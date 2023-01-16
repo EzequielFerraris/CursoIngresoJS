@@ -1,13 +1,14 @@
 function mostrar()
 {
-	var contador;
-	var acumulador;
-	var numeroIngresado;
+	let i = 0;
+	let suma = 0;
 
-	contador=0;
-	acumulador=0;
+	while(i < 5) {
+		let dato = prompt("Ingrese un número entero: ");
+		suma += parseInt(dato);
+		i++;
+	}
 	
-	
-	txtIdSuma.value=acumulador;
-	txtIdPromedio.value=acumulador/5;
+	document.getElementById("txtIdSuma").value = suma;
+	document.getElementById("txtIdPromedio").value = suma / i;
 }//FIN DE LA FUNCIÓN

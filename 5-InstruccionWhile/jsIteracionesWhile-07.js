@@ -4,15 +4,33 @@ e informar la suma acumulada y el promedio.
 */
 function mostrar()
 {
-	var contador;
-	var acumulador;
-	var respuesta;
-	contador=0;
-	acumulador=0;
-	respuesta='si';
+	let i = 0;
+	let suma = 0;
+	let continuar = true;
+	let exp = new RegExp('si', 'i');
 
-
-	txtIdSuma.value=acumulador;
-	txtIdPromedio.value=acumulador/contador;
+	while(continuar) {
+		if(i == 0) {
+			let dato = prompt("Ingrese un número entero: ");
+			suma += parseInt(dato);
+			i++;
+		}
+		else {
+			let pregunta = prompt("¿Desea continuar agregando número?");
+			if(exp.test(pregunta)) {
+				let dato = prompt("Ingrese un número entero: ");
+				suma += parseInt(dato);
+				i++;
+				continue;
+			}
+			else {
+				continuar = false;
+				break;
+			}
+		};
+	};
+	
+	document.getElementById("txtIdSuma").value = suma;
+	document.getElementById("txtIdPromedio").value = suma / i;
 
 }//FIN DE LA FUNCIÓN
