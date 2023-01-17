@@ -1,33 +1,37 @@
 /*
 Al presionar el botón pedir  números  hasta que el usuario quiera,
 mostrar el número máximo y el número mínimo ingresado.*/
-function mostrar()
-{	// declarar variables
+function mostrar() {
 	let i = 0;
 	let arr = [];
 	let continuar = true;
 	let exp = new RegExp('si', 'i');
+	let max = 0;
+	let min = 0;
 
-	while(continuar) {
-		if(i == 0) {
-			let dato = prompt("Ingrese un número entero: ");
-			arr.push(parseInt(dato));
-			i++;
-		}
-		else {
-			let pregunta = prompt("¿Desea continuar agregando número?");
-			if(exp.test(pregunta)) {
-				let dato = prompt("Ingrese un número entero: ");
-				arr.push(parseInt(dato));
-			}
-			else {
+	do {
+		if(i != 0) {
+			let pregunta = prompt("¿Desea continuar agregando números?");
+			if(!exp.test(pregunta)) {
 				continuar = false;
 				break;
-			};
-		};
-	};
-	
-	document.getElementById("txtIdMaximo").value = Math.max(...arr);
-	document.getElementById("txtIdMinimo").value = Math.min(...arr);
+			}
+		}
+		else {
+			let dato = prompt("Ingrese un número entero: ");
+			dato = parseInt(dato);
+			arr.push(parseInt(dato));
+			i = 1;
+		}
+	}
+	while(continuar);
 
-}//FIN DE LA FUNCIÓN
+	if (arr.length != 0) {
+		max = Math.max(...arr);
+		min =  Math.min(...arr);
+	};
+
+	document.getElementById("txtIdMaximo").value = max;
+	document.getElementById("txtIdMinimo").value = min;
+
+}; //FIN DE LA FUNCIÓN
