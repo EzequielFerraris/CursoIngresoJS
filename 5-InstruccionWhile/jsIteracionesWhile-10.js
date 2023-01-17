@@ -10,9 +10,9 @@ hasta que el usuario quiera, mostrar:
 7-Promedio de positivos.
 8-Promedios de negativos.
 9-Diferencia entre positivos y negativos, (positvos-negativos). */
+
 function mostrar()
 {
-	//declarar contadores y variables 
 	let i = 0;
 	let arrPos = [];
 	let arrNeg = [];
@@ -20,10 +20,15 @@ function mostrar()
 	let continuar = true;
 	let exp = new RegExp('si', 'i');
 
-
-	while(continuar) {
-		if(i == 0) {
-			let dato = prompt("Ingrese un número entero: ");
+	do {
+		if(i != 0) {
+			let pregunta = prompt("¿Desea continuar agregando números?");
+			if(!exp.test(pregunta)) {
+				continuar = false;
+				break;
+			}
+		}
+		let dato = prompt("Ingrese un número entero: ");
 			dato = parseInt(dato);
 			if(dato == 0) {
 				ceros.push(dato);
@@ -34,29 +39,9 @@ function mostrar()
 			else{
 				arrPos.push(dato);
 			}
-			i++;
-		}
-		else {
-			let pregunta = prompt("¿Desea continuar agregando números?");
-			if(exp.test(pregunta)) {
-				let dato = prompt("Ingrese un número entero: ");
-				dato = parseInt(dato);
-				if(dato == 0) {
-					ceros.push(dato);
-				}
-				else if(dato < 0) {
-					arrNeg.push(dato);
-				}
-				else{
-					arrPos.push(dato);
-				}
-			}
-			else {
-				continuar = false;
-				break;
-			};
-		};
-	};//fin del while
+			i++;	
+	}
+	while(continuar); //fin del while
 
 	let sumaNegativos;
 	let sumaPositivos;
@@ -70,12 +55,12 @@ function mostrar()
 
 	if(arrNeg.length == 0) {
 		sumaNegativos = 0;
-		promedioNeg = "No hay números positivos ingresados"
+		promedioNeg = "No hay números positivos ingresados";
 	}
 	else {
 		sumaNegativos = arrNeg.reduce((sum, x) => sum + x);
-		promedioNeg = sumaNegativos / cantNegativos;
-		nrosPares.push(arrNeg.filter((x) => {if(x % 2 == 0){return x}}))
+		promedioNeg = (sumaNegativos / cantNegativos).toFixed(2);
+		nrosPares.push(arrNeg.filter((x) => {if(x % 2 == 0){return x}}));
 	};
 	if(arrPos.length == 0) {
 		sumaPositivos = 0;
@@ -83,8 +68,8 @@ function mostrar()
 	}
 	else {
 		sumaPositivos = arrPos.reduce((sum, x) => sum + x);
-		promPositivos = sumaPositivos / cantPositivos;
-		nrosPares.push(arrPos.filter((x) => {if(x % 2 == 0){return x}}))
+		promPositivos = (sumaPositivos / cantPositivos).toFixed(2);
+		nrosPares.push(arrPos.filter((x) => {if(x % 2 == 0){return x}}));
 	};
 
 	let cantNrosPares = nrosPares.flat().length;
@@ -101,6 +86,6 @@ function mostrar()
 	8-Promedios de negativos: ${promedioNeg}.<br>
 	9-Diferencia entre positivos y negativos: ${diferencia}.<br>
 	10-Números pares ingresados: ${nrosPares}<br>`);
-//
 
 }//FIN DE LA FUNCIÓN
+
