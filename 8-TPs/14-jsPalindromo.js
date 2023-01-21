@@ -17,49 +17,28 @@ Temas que quedan fuera del alcance deseado:
 */
 function verificarPalindromo () 
 {
-	var palabraIngresada;
-	var palabraSinEspacios;
-	var palabraInvertida;
-	var i;
+	let palabraIngresada = document.getElementById("txtIdPalabra").value;
+	let palabraLimpia;
+	let palabraInvertida;
 
+//CREO REG EXP PARA ELIMINAR ESPACIOS Y SIMBOLOS QUE NO SON NUMEROS O LETRAS
+	let espacios = /\s+/g;
+	let simbolos = /[\W_]+/gi
 
+	palabraLimpia = palabraIngresada.replace(espacios, "");
+	palabraLimpia = palabraLimpia.replace(simbolos, "");
 
-	palabraIngresada=txtIdPalabra.value;
-	//console.log(palabra.legth);
+	let array1 = [...palabraLimpia];
+	array1 = array1.reverse();
+	palabraInvertida = array1.reduce((acc, x) => acc.concat(x), "")
 
-	palabraSinEspacios="";
-	palabraInvertida="";
+	document.getElementById("txtIdPalabraInvertida").value = palabraInvertida;
 
-	for(i=0;i<palabraIngresada.length;i++)
-	{
-		//console.log(palabraIngresada[i]);
-		if (palabraIngresada[i]==" ") //(palabraIngresada[i] es cada letra por separado
-		{
-			continue;//esto permite saltear las siguentes lineas si encuentra " "
-		}
-		palabraSinEspacios=palabraSinEspacios+palabraIngresada[i];
-	}
-	//console.log("sin espacios: "+palabraSinEspacios);
+	let condition = palabraLimpia == palabraInvertida;
 
-	for(i=0;i<palabraSinEspacios.length;i++)
-	{
-		palabraInvertida=palabraSinEspacios[i]+palabraInvertida;
-	}
-
-	txtIdPalabraInvertida.value=palabraInvertida;
-	if(palabraInvertida==palabraSinEspacios)
-	{
-		alert("es palindromo");
-	}
-	else
-	{
-		alert("mmm, no");
-	}
-	console.log("ingresada: "+palabraIngresada);
-	console.log("sin espacios: "+palabraSinEspacios);
-	console.log("cadena invertida:"+palabraInvertida);
-
-}
+	condition ? alert("Es un palíndromo"): alert("No es un palíndromo");
+	
+};
 
 /* 
 algunos palindromos para testear:
