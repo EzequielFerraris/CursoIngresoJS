@@ -1,173 +1,169 @@
 
-function validarString(str) {
+function validarDato(nombre, min="not") {
 
   let i=0;
-  let condition = true;
+  let condition =  true;
 
-  do{
-    let datoI;
-    if(i==0) {
-      datoI= prompt(`Por favor, ingrese un valor para ${str}.`);
-      i++;
-    }
-    else {
-      datoI = prompt(`El dato ingresado es incorrecto. Por favor reingrese un valor para ${str}`);
-    };
+  do {
+      let datoI;
+      let mensajeAd;
+      let tipoDato;
 
-    let checker = /[^a-zA-Z]/g;
+      switch(nombre) {
+          case "el material":
+              mensajeAd = `Puede ser "cal", "arena" o "cemento".`;
+              tipoDato = "string";
+              break;
+          case "la cantidad de bolsas":
+          case "el precio":  
+              mensajeAd = `Número mayor a 0.`;
+              tipoDato = "number";
+              break;
+      };
 
-    if(checker.test(datoI)) {
-      continue;
-    }
- 
-    if(datoI != "cal" && datoI != "arena" && datoI != "cemento") {
-      continue;
-    };
+      if(i==0) {
+          datoI = prompt(`Por favor, ingrese un dato para ${nombre}. ${mensajeAd}`);
+          i++;
+      }
+      else {
+          datoI = prompt(`El dato ingresado es inválido. Intentelo nuevamente. ${mensajeAd}`);
+      };
 
-    condition= false;
-    return datoI;
+      let checker;
+
+      //Si es un string
+      if(tipoDato == "string") {
+          
+          checker = /[^a-zA-Záéíóú]/gi;
+
+          if(checker.test(datoI) || typeof datoI != "string") {
+              continue;
+          };
+
+          if(datoI !="cal" && datoI !="arena" && datoI !="cemento") {
+                      continue;   
+          };
+
+      }
+      else {
+          checker = /[^0-9.]/g;
+
+          if(checker.test(datoI)) {
+              continue;
+          };
+
+          datoI = parseFloat(datoI);
+      
+          if(typeof min == "number" || isNaN(datoI)) {
+              if(datoI <= min) {
+                  continue;
+              }
+          };
+          };
+
+      condition = false;
+      return datoI;
   }
   while(condition);
-
-
 };
 
 
-function validarNum(num, min) {
+function mostrar() {
 
-  let i=0;
-  let condition = true;
-
-  do{
-    let datoI;
-    if(i==0) {
-      datoI= prompt(`Por favor, ingrese un valor para ${num}.`);
-      i++;
-    }
-    else {
-      datoI = prompt(`El dato ingresado es incorrecto. Por favor reingrese un valor para ${num}`);
-    };
-
-    let checker = /[^0-9.]/g;
-
-    if(checker.test(datoI)) {
-      continue;
-    }
- 
-    if(num == "el precio") {
-      datoI = parseFloat(datoI);
-    }
-    else {
-      datoI = parseInt(datoI);
-    };
-    
-
-    if(datoI <= min || isNaN(datoI)) {
-      continue;
-    };
-
-    condition= false;
-    return datoI;
-  }
-  while(condition);
-
-};
-
-
-
-function mostrar(){
-
-  let cantidadTotalBolsas = 0;
-  let importeBrutoTotal = 0;
   let descuento = 0;
-  let importeFinal = 0;
+  let cantidadDeBolsas = 0;
+  let cantidadBolsasCal = 0;
+  let cantidadBolsasArena = 0;
+  let cantidadBolsasCemento = 0;
+  let importeBruto = 0;
+  let importeConDescuento = 0;
+  let materialMasCompradoCant = 0;
+  let materialMasComprado;
+  let tipoPrecioMasAlto;
+  let precioMasAlto = 0;
 
-  let tipoMasComprado = "No se ha comprado nada";
-  let cantTipoMasComprado = "No se ha comprado nada";
-  let cantidadTotalCal = 0;
-  let cantidadTotalArena = 0;
-  let cantidadTotalCemento = 0;
+  let i=0;
+  let condition= true;
+  do {
+      let pregunta;
+      if(i==0) {
+          alert(`Bienvenido! Aquí podrá ingresar los datos de los materiales a comprar`);
+          i++;
+      }
+      else {
+          pregunta = prompt("¿Desea seguir cargando datos? (SI/NO)");
+          if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") {
+              condition= false;
+              break;
+          }
+      }
 
-  let precioMasCaro = 0;
-  let tipoMasCaro = "No se ha comprado nada";
+      let materialValidado = validarDato("el material");
+      let cantidadBolsasValidada = validarDato("la cantidad de bolsas", 0);
+      let precioValidado = validarDato("el precio", 0);
+      
 
-  let i = 0;
-  let condition = true;
-  do{
-    let pregunta;
-    if(i==0) {
-      alert(`Bienvenidx. Aquí podrá ingresar la cantidad de productos a comprar para su construcción`);
-      i++;
-    }
-    else {
-      pregunta = prompt(`¿Desea seguir cargando productos? (SI/NO)`);
-      if(pregunta != "SI" && pregunta !="Si" && pregunta != "si") {
-        condition = false;
-        break;
+      if(i==1) {
+          tipoPrecioMasAlto = materialValidado;
+          precioMasAlto = precioValidado;
+          i++;
+      }
+      else {
+          if(precioMasAlto < precioValidado) {
+            tipoPrecioMasAlto = materialValidado;
+            precioMasAlto = precioValidado;
+          }
       };
-    };
 
-    let productoValidado = validarString("el producto ('cal', 'arena' o 'cemento'");
-    let cantBolsasValidada = validarNum("la cantidad de bolsas (número entero mayor a 0)", 0);
-    let precioBolsaValidado = validarNum("el precio", 0);
-
-    cantidadTotalBolsas += cantBolsasValidada;
-    importeBrutoTotal += cantBolsasValidada * precioBolsaValidado;
-
-    if(i==1) {
-      precioMasCaro = precioBolsaValidado;
-      tipoMasCaro = productoValidado;
-      i++;
-    }
-    else {
-      if(precioMasCaro < precioBolsaValidado) {
-        precioMasCaro = precioBolsaValidado;
-        tipoMasCaro = productoValidado;
+      switch(materialValidado) {
+        case "cal":
+          cantidadBolsasCal += cantidadBolsasValidada;
+          break;
+        case "cemento":
+          cantidadBolsasCemento += cantidadBolsasValidada;
+          break;
+        case "arena":
+          cantidadBolsasArena += cantidadBolsasValidada;
+          break;
       };
-    };
 
-    switch(productoValidado) {
-      case "cal":
-        cantidadTotalCal += cantBolsasValidada;
-        break;
-      case "arena":
-        cantidadTotalArena += cantBolsasValidada;
-        break;
-      case "cemento":
-        cantidadTotalCemento += cantBolsasValidada;
-        break;
-    };
+      importeBruto += cantidadBolsasValidada * precioValidado;
+
   }
   while(condition);
 
-  cantTipoMasComprado = Math.max(cantidadTotalArena, cantidadTotalCal, cantidadTotalCemento);
-  if(cantTipoMasComprado == cantidadTotalArena) {
-    tipoMasComprado = "arena";
-  }
-  else if(cantTipoMasComprado == cantidadTotalCal) {
-    tipoMasComprado = "cal";
-  }
-  else {
-    tipoMasComprado = "cemento";
-  };
+  cantidadDeBolsas = cantidadBolsasArena + cantidadBolsasCal + cantidadBolsasCemento;
 
-  if(cantidadTotalBolsas > 30) {
+  if(cantidadDeBolsas > 30) {
     descuento = 0.25;
   }
-  else if (cantidadTotalBolsas > 10) {
+  else if(cantidadDeBolsas > 10) {
     descuento = 0.15;
   };
+
+  materialMasCompradoCant = Math.max(cantidadBolsasArena, cantidadBolsasCal, cantidadBolsasCemento);
+  if(materialMasCompradoCant == cantidadBolsasArena) {
+    materialMasComprado = "arena";
+  }
+  else if (materialMasCompradoCant == cantidadBolsasCal) {
+    materialMasComprado = "cal";
+  } 
+  else {
+    materialMasComprado = "cemento";
+  } 
   
-  importeFinal = (importeBrutoTotal - (importeBrutoTotal * descuento)).toFixed(2);
-  
-  if(descuento ==0) {
-    alert(`El importe final a pagar es de $${importeFinal}. El material más comprado fue ${tipoMasComprado} con ${cantTipoMasComprado} bolsas, y el material más caro comprado fue ${tipoMasCaro} a $${precioMasCaro}`);
+  importeConDescuento = (importeBruto - (importeBruto * descuento)).toFixed(2);
+  importeBruto = importeBruto.toFixed(2);
+
+  if(descuento > 0) {
+    alert(`El importe bruto a pagar es de $${importeBruto}. Se le aplica un descuento del ${descuento*100}%, siendo el total $${importeConDescuento}. El material más comprado fue ${materialMasComprado}, y el más caro por bolsa fue ${tipoPrecioMasAlto} por $${precioMasAlto}`);
   }
   else {
-    alert(`El importe bruto a pagar es de $${importeBrutoTotal}. El importe final a pagar, con descuento, es de $${importeFinal}. El material más comprado fue ${tipoMasComprado} con ${cantTipoMasComprado} bolsas, y el material más caro comprado fue ${tipoMasCaro} a ${precioMasCaro}`);
-  };
-  
+    alert(`El importe total a pagar es de $${importeBruto}. El material más comprado fue ${materialMasComprado}, y el más caro por bolsa fue ${tipoPrecioMasAlto} por $${precioMasAlto}`);
+  }
 
 };
+
+
 
 

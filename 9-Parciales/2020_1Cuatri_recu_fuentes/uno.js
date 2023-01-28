@@ -1,156 +1,167 @@
-function validarNumero(num, min, max) {
-    let i = 0;
-    let condition = true;
-    do {
-        let datoI;
-        if(i==0) {
-            datoI = prompt(`Por favor, ingrese un dato para ${num}. Debe ser entre ${min} y ${max}`);
-            i++;
-        }
-        else {
-            datoI = prompt(`El dato ingresado es incorrecto. Intente nuevamente. Debe ser entre ${min} y ${max}`);
-        };
+function validarDato(nombre, min="not", max="not") {
 
-        let checker = /[^0-9.]/g;
+  let i=0;
+  let condition =  true;
+  do {
+      let datoI;
+      let mensajeAd;
+      let tipoDato;
 
-        if(checker.test(datoI)) {
+      switch(nombre) {
+          case "el producto":
+              mensajeAd = `Puede ser "barbijos", "alcohol" o "jabón".`;
+              tipoDato = "string";
+              break;
+          case "el precio":
+              mensajeAd = `Debe ser entre $100 y $300"`;
+              tipoDato = "number";
+              break;
+          case "la cantidad":
+              mensajeAd = `Debe ser entre 0 y 1000`;
+              tipoDato = "number";
+              break;
+          case "la marca":
+          case "el fabricante":
+              mensajeAd = `Solo debe contener letras`;
+              tipoDato = "string";
+              break;
+      };
+
+      if(i==0) {
+          datoI = prompt(`Por favor, ingrese un dato para ${nombre}. ${mensajeAd}`);
+          i++;
+      }
+      else {
+          datoI = prompt(`El dato ingresado es inválido. Intentelo nuevamente. ${mensajeAd}`);
+      };
+      let checker;
+
+      //Si es un string
+      if(tipoDato == "string") {
+          checker = /[^a-zA-Záéíóú]/gi;
+          if(checker.test(datoI) || typeof datoI != "string") {
+              continue;
+          };
+          switch(nombre) {
+              case "la marca":
+              case "el fabricante":
+                  if(datoI.length <= 1) {
+                      continue;
+                  };
+                  break;
+              case "el producto":
+                  if(datoI !="barbijos" && datoI !="alcohol" && datoI !="jabón") {
+                      continue;
+                      }
+                  break;      
+          };
+      }
+      else {
+          checker = /[^0-9.]/g;
+
+          if(checker.test(datoI)) {
+              continue;
+          };
+          datoI = parseFloat(datoI);
+          if(isNaN(datoI)) {
             continue;
         };
-
-        datoI = parseFloat(datoI);
-
-        if(datoI < min || datoI > max || isNaN(datoI)) {
-            continue;
-        };
-
-        if(num == "la cantidad" && datoI == min) {
-            continue;
-        };
-
-        condition = false;
-        return datoI;
-
-    }
-    while(condition);
+          if(typeof min == "number") {
+              if(datoI < min) {
+                  continue;
+              }
+          };
+          if(typeof max == "number") {
+              if(datoI > max) {
+                  continue;
+              }
+          };
+      };
+      condition = false;
+      return datoI;
+  }
+  while(condition);
 };
 
-function validarStr(str) {
-    let i = 0;
-    let condition = true;
-    do {
-        let datoI;
-        if(i==0) {
-            if(str == "el producto") {
-                datoI = prompt(`Por favor, ingrese un dato para ${str}. Puede ser "barbijo", "alcohol" o "jabón".`);
-                i++;
-            } else {
-                datoI =prompt(`Por favor, ingrese un dato para ${str}. Solo debe contener letras`);
-                i++;
-            };
-        }
-        else {
-            if(str == "el producto") {
-                datoI = prompt(`El dato ingresado es incorrecto. Intente nuevamente. Puede ser "barbijo", "alcohol" o "jabón".`);
-            } else {
-                datoI = prompt(`El dato ingresado es incorrecto. Intente nuevamente. Solo debe contener letras`);
-            };
-        };
-
-    let checker = /[^a-zA-Záéíóú]/gi;
-    
-    if(checker.test(datoI)) {
-        continue;
-    };
-
-    if(typeof datoI != "string" || datoI.length <=1) {
-        continue;
-    };
-
-    if(str == "el producto" && datoI != "barbijo" && datoI != "alcohol" && datoI != "jabón") {
-        continue;
-    };
-
-    condition = false;
-    return datoI;
-    }
-    while(condition);
-}
-
-function mostrar(){	
-	
-    let precioJabonCaro = "No se ha comprado jabón";
-    let cantidadJabonCaro = 0;
-    let fabricanteJabonCaro = "nadie";
-    
-    let totalAlcohol = 0;
-    let totalJabon = 0;
-    let totalBarbijos = 0;
-    let vecesJabon = 0;
-    let vecesBarbijos = 0;
-    let vecesAlcohol = 0;
-
-    let productoMasComprado;
-    let cantidadProductoMasComprado;
-    let cantVecesProductoMasComprado;
-    
-
-    for(let i=0; i <5; i++) {
-
-        let productoValidado = validarStr("el producto");
-        let precioValidado = validarNumero("el precio", 100, 300);
-        let cantidadValidada = validarNumero("la cantidad", 0, 1000);
-        let marcaValidada = validarStr("la marca");
-        let fabricanteValidado = validarStr("el fabricante");
-
-        switch(productoValidado) {
-            case "barbijo":
-                totalBarbijos += cantidadValidada;
-                vecesBarbijos++;
-                break;
-            case "alcohol":
-                totalAlcohol += cantidadValidada;
-                vecesAlcohol++;
-                break;
-            case "jabón":
-                totalJabon += cantidadValidada;
-                vecesJabon++;
-                if(typeof precioJabonCaro == "string") {
-                    precioJabonCaro = precioValidado;
-                    cantidadJabonCaro = cantidadValidada;
-                    fabricanteJabonCaro = fabricanteValidado;
-                }
-                else if (precioJabonCaro < precioValidado){
-                    precioJabonCaro = precioValidado;
-                    cantidadJabonCaro = cantidadValidada;
-                    fabricanteJabonCaro = fabricanteValidado;
-                };
-                break;
-        };
-
-    };
-    
-    cantidadProductoMasComprado = Math.max(totalAlcohol, totalBarbijos, totalJabon);
-
-    if(cantidadProductoMasComprado == totalAlcohol) {
-        productoMasComprado = "alcohol";
-        cantidadProductoMasComprado = totalAlcohol;
-        cantVecesProductoMasComprado = vecesAlcohol;
-    } 
-    else if (cantidadProductoMasComprado == totalBarbijos) {
-        productoMasComprado = "barbijos";
-        cantidadProductoMasComprado = totalBarbijos;
-        cantVecesProductoMasComprado = vecesBarbijos;
-    }
-    else {
-        productoMasComprado = "jabón";
-        cantidadProductoMasComprado = totalJabon;
-        cantVecesProductoMasComprado = vecesJabon;
-
-    };
-
-    promedioProdMasComprado = (cantidadProductoMasComprado / cantVecesProductoMasComprado).toFixed(2);
+function mostrar() {
   
-    alert(`La cantidad de jabón más caro fue de ${cantidadJabonCaro} y su fabricante es ${fabricanteJabonCaro}. El producto más comprado fue ${productoMasComprado}, y en promedio se compraron ${promedioProdMasComprado} por compra. Se compraron ${totalBarbijos} barbijos en total.`);
+  let precioJabonMasCaro = 0;
+  let cantidadJabonCaro = 0;
+  let fabricanteJabonMasCaro = "no se compraron jabones";
 
+  let cantidadJabon = 0;
+  let cantidadAlcohol = 0;
+  let cantidadBarbijos = 0;
+
+  let comprasJabon = 0;
+  let comprasAlcohol = 0;
+  let comprasBarbijos= 0;
+
+  let cantidadProductoMasComprado = 0;
+  let productoMasComprado;
+  let promedioPorCompra;
+
+  for(let i=0; i < 2; i++){
+      if(i==0) {
+          alert(`Bienvenido! Aquí podrá ingresar los insumos sanitarios a comprar`);
+      }
+      else {
+        alert(`A continuación podrá ingresar el producto número ${i+1}`)
+      }
+
+      //VALIDAR
+
+      let tipoValidado = validarDato("el producto");
+      let precioValidado = validarDato("el precio", 100, 300);
+      let cantidadValidada = validarDato("la cantidad", 0, 1000);
+      let marcaValidada = validarDato("la marca");
+      let fabricanteValidado = validarDato("el fabricante");
+
+      switch(tipoValidado) {
+        case "jabón":
+          cantidadJabon += cantidadValidada;
+          comprasJabon++;
+          break;
+        case "alcohol":
+          cantidadAlcohol += cantidadValidada;
+          comprasAlcohol++;
+          break;
+        case "barbijos":
+          cantidadBarbijos += cantidadValidada;
+          comprasBarbijos++;
+          break;
+      }
+
+      if(tipoValidado == "jabón" && precioJabonMasCaro == 0) {
+        precioJabonMasCaro = precioValidado;
+        cantidadJabonCaro = cantidadValidada;
+        fabricanteJabonMasCaro = fabricanteValidado;
+      };
+      
+      if(tipoValidado == "jabón" && precioJabonMasCaro < precioValidado) {
+        precioJabonMasCaro = precioValidado;
+        cantidadJabonCaro = cantidadValidada;
+        fabricanteJabonMasCaro = fabricanteValidado;
+      };
+
+  };
+
+  cantidadProductoMasComprado = Math.max(cantidadAlcohol, cantidadBarbijos, cantidadJabon);
+
+  if(cantidadProductoMasComprado == cantidadAlcohol) {
+    productoMasComprado = "alcohol";
+    promedioPorCompra = (cantidadAlcohol / comprasAlcohol).toFixed(2);
+  } 
+  else if(cantidadProductoMasComprado == cantidadBarbijos) {
+    productoMasComprado = "barbijo";
+    promedioPorCompra = (cantidadBarbijos / comprasBarbijos).toFixed(2);
+  } 
+  else {
+    productoMasComprado = "jabón";
+    promedioPorCompra = (cantidadJabon / comprasJabon).toFixed(2);
+  };
+
+  alert(`La cantidad comprada del jabón más caro fue ${cantidadJabonCaro} y su fabricante fue ${fabricanteJabonMasCaro}.
+El promedio por compra del producto más comprado (${productoMasComprado}), fue de ${promedioPorCompra}.
+La cantidad de barbijos comprada fue de ${cantidadBarbijos}`);
 };
-

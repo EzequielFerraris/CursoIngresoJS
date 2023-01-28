@@ -1,171 +1,203 @@
-function validarNum(num, min, max) {
-let i = 0;
-let condition = true;
-do{
-	let datoI;
-	if(i==0) {
-		datoI= prompt(`Por favor, ingrese un valor para ${num}. El mismo debe encontrarse entre ${min} y ${max}.`);
-		i++;
-	}
-	else {
-	datoI= prompt(`El dato ingresado no es válido. Inténtelo nuevamente.  El mismo debe encontrarse entre ${min} y ${max}.`)	
-	};
 
-	let checker = /[^0-9.]/g
+function validarDato(nombre, min="not", max="not") {
 
-	if(checker.test(datoI)) {
-		continue;
-	}
+    let i=0;
+    let condition =  true;
 
-	datoI = parseFloat(datoI);
+    do {
+        let datoI;
+        let mensajeAd;
+        let tipoDato;
 
-	if(datoI < min || datoI > max || isNaN(datoI)) {
-		continue;
-	};
+        switch(nombre) {
+            case "el nombre":
+                mensajeAd = `Solo debe contener letras.`;
+                tipoDato = "string";
+                break;
+            case "la nacionalidad":
+                mensajeAd = `Ingrese "A" para "argentino", "E" para "extranjero" o "N" para "nacionalizado"`;
+                tipoDato = "string";
+                break;
+            case "la edad":
+                mensajeAd = `Edades válidas entre 0 y 120.`;
+                tipoDato = "number";
+                break;
+            case "el sexo":
+                mensajeAd = `(M / F)`;
+                tipoDato = "string";
+                break;
+            case "el estado civil":
+                mensajeAd = `Valores posibles: "casado", "soltero", "viudo"`;
+                tipoDato = "string";
+                break;
+            case "la temperatura":
+                mensajeAd = `Valores entre 30º y 50º.`;
+                tipoDato = "number";
+                break;
+        };
 
-	condition = false;
-	return datoI;
-	
-}
-while(condition);	
+        if(i==0) {
+            datoI = prompt(`Por favor, ingrese un dato para ${nombre}. ${mensajeAd}`);
+            i++;
+        }
+        else {
+            datoI = prompt(`El dato ingresado es inválido. Intentelo nuevamente. ${mensajeAd}`);
+        };
+
+        let checker;
+
+        //Si es un string
+        if(tipoDato == "string") {
+            
+            checker = /[^a-zA-Záéíóú]/gi;
+
+            if(checker.test(datoI) || typeof datoI != "string") {
+                continue;
+            };
+
+            switch(nombre) {
+                case "el nombre":
+                    if(datoI.length <= 1) {
+                        continue;
+                    };
+                    break;
+                case "la nacionalidad":
+                    if(datoI !="A" && datoI !="E" && datoI !="N") {
+                        continue;
+                    } else {
+                        switch(datoI) {
+                            case "A":
+                                datoI = "Argentino";
+                                break;
+                            case "E": 
+                                datoI = "Extranjero";
+                                break;
+                            case "N":
+                                datoI = "Nacionalizado";
+                                break;
+                        }
+                    };
+                    break;
+                case "el sexo":
+                    if(datoI !="F" && datoI !="M") {
+                        continue;
+                    };
+                    break;
+                case "el estado civil":
+                    if(datoI !="soltero" && datoI !="casado" && datoI !="viudo") {
+                        continue;
+                    };
+                    break;
+            };
+
+        }
+        else {
+            checker = /[^0-9.]/g;
+
+            if(checker.test(datoI)) {
+                continue;
+            };
+
+            datoI = parseFloat(datoI);
+        
+            if(typeof min == "number" || isNaN(datoI)) {
+                if(datoI < min) {
+                    continue;
+                }
+            };
+
+            if(typeof max == "number") {
+                if(datoI > max) {
+                    continue;
+                }
+            };
+        };
+
+        condition = false;
+        return datoI;
+    }
+    while(condition);
+
 };
 
+function mostrar() {
 
-function validarStr(str, rango="") {
-	let i = 0;
-	let condition = true;
-
-do{
-	let datoI;
-	if(i==0) {
-		datoI= prompt(`Por favor, ingrese un valor para ${str}. Solo debe contener letras ${rango}`);
-		i++;
-	}
-	else {
-	datoI= prompt(`El dato ingresado no es válido. Inténtelo nuevamente. Solo debe contener letras ${rango}`)
-	};
-
-	let checker = /[^a-zA-Záéíóú]/g
-
-	if(checker.test(datoI)) {
-		continue;
-	}
-
-	switch(str) {
-		case "el sexo":
-			if(datoI != "F" && datoI != "M") {
-				continue;
-			};
-			break;
-		case "la nacionalidad":
-			
-			switch(datoI) {
-				case "A":
-					datoI = "argentina";
-					break;
-				case "E":
-					datoI = "extranjera";
-					break;
-				case "N":
-					datoI = "nacionalizada";
-					break;
-				default:
-					continue;
-			};
-			break;
-		case "el estado civil":
-			if(datoI != "casado" && datoI != "soltero" && datoI != "viudo") {
-				continue;
-			};
-			break;
-		case "el nombre":
-			if(datoI.length <=1 || typeof datoI != "string") {
-				continue;
-			}
-			break;
-	};
-
-	condition = false;
-	return datoI;
-}
-while(condition);
-};
+    let tempMasAlta = 0;
+    let nacionalidadTempMasAlta;
+    let cantMayoresSolteros = 0;
+    let mujeresSolterasViudas = 0;
+    let mayoresConTemp = 0;
+    let cantMujeresCasadas = 0;
+    let edadMujeresCasadasAcc = 0;
+    let promedioEdadCasadas = "No se registraron mujeres casadas"
 
 
-function mostrar(){
+    let i=0;
+    let condition= true;
+    do {
+        let pregunta;
+        if(i==0) {
+            alert(`Bienvenido! Aquí podrá ingresar los datos de los pasajeros`);
+            i++;
+        }
+        else {
+            pregunta = prompt("¿Desea seguir cargando datos? (SI/NO)");
+            if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") {
+                condition= false;
+                break;
+            }
+        }
 
-	let tempMasAlta = "No se registraron temperaturas";
-	let nacTempMasAlta = "No se ingresó ningún caso";
+        let nombreValidado = validarDato("el nombre");
+        let nacionalidadValidada = validarDato("la nacionalidad");
+        let edadValidada = validarDato("la edad", 0, 120);
+        let sexoValidado = validarDato("el sexo");
+        let estadoCivilValidado = validarDato("el estado civil");
+        let tempValidada = validarDato("la temperatura", 30, 50);
 
-	let cantMayoresSolteros = 0;
-	let cantMujeresSolterasOViudas = 0;
-	let mayoresConTempAlta = 0;
-	let mujeresCasadas = 0;
-	let edadMujeresCasadasAcc = 0;
-	let promedioEdadMujeresCasadas = "No se registraron mujeres casadas."
+        if(i==1) {
+            tempMasAlta = tempValidada;
+            nacionalidadTempMasAlta = nacionalidadValidada;
+            i++;
+        }
+        else {
+            if(tempMasAlta < tempValidada) {
+                tempMasAlta = tempValidada;
+                nacionalidadTempMasAlta = nacionalidadValidada;
+            }
+        };
 
-	let i = 0;
-	let condition = true;
-	do{
-		let pregunta;
-		if(i==0) {
-			alert(`Bienvenidx! Aquí podrá cargar los datos de los pasajeros registrados para el vuelo.`);
-			i++;
-		}
-		else {
-			pregunta = prompt(`¿Desea seguir registrando pasajeros? (SI/NO)`);
-			if(pregunta != "SI" && pregunta != "si" && pregunta != "Si") {
-				condition = false;
-				break;
-			};
-		};
+        if(edadValidada >= 18 && estadoCivilValidado == "soltero") {
+            cantMayoresSolteros++;
+        };
 
-		let nombreValidado = validarStr("el nombre");
-		let nacionalidadValidada = validarStr("la nacionalidad", "('A' = Argentino/ 'E' = 'Extranjero/ 'N' = 'Nacionalizado'")
-		let edadValidada = validarNum("la edad", 0, 120);
-		let sexoValidado = validarStr("el sexo", "(M/F)");
-		let estadoCivilValidado = validarStr("el estado civil", "(casado/ soltero/ viudo)");
-		let tempValidada = validarNum("la temperatura", 30, 50);
+        if (sexoValidado == "F") {
+            if (estadoCivilValidado == "soltero" || estadoCivilValidado == "viudo") {
+                mujeresSolterasViudas++;
+            }
+            else {
+                cantMujeresCasadas++;
+                edadMujeresCasadasAcc += edadValidada;
+            };
+        };
 
-		if(i==1) {
-			tempMasAlta = tempValidada;
-			nacTempMasAlta = nacionalidadValidada;
-			i++;
-		}
-		else if(tempMasAlta < tempValidada){
-			tempMasAlta = tempValidada;
-			nacTempMasAlta = nacionalidadValidada;
-		};
+        if(edadValidada > 60 && tempValidada > 38) {
+            mayoresConTemp++;
+        };
 
-		if(edadValidada >= 18 && estadoCivilValidado == "soltero") {
-			cantMayoresSolteros++;
-		};
+    }
+    while(condition);
 
-		if(sexoValidado == "F") {
-			if(estadoCivilValidado == "soltero" || estadoCivilValidado == "viudo") {
-				cantMujeresSolterasOViudas++;
-			}
-			else {
-				mujeresCasadas++;
-				edadMujeresCasadasAcc += edadValidada;
-			};
-		}
+    if(cantMujeresCasadas > 0) {
+        promedioEdadCasadas = (edadMujeresCasadasAcc / cantMujeresCasadas).toFixed(2);
+    };
 
-		if(edadValidada > 60  && tempValidada > 38) {
-			mayoresConTempAlta++;
-		};
 
-}
-while(condition);
-
-if(mujeresCasadas > 0) {
-	promedioEdadMujeresCasadas = (edadMujeresCasadasAcc / mujeresCasadas).toFixed(2);
-};
-
-alert(`La nacionalidad de la persona con la mayor temperatura registrada es ${nacTempMasAlta}.
-Hay ${cantMayoresSolteros} mayores de edad solteros, ${cantMujeresSolterasOViudas} mujer/es soltera/s o viuda/s.
-Las personas mayores a 60 años con más de 38º de temperatura sumaron: ${mayoresConTempAlta}.
-El promedio de edad entre las mujeres casadas fue de: ${promedioEdadMujeresCasadas}`);
+    alert(`La nacionalidad de la persona con mayor temperatura fue ${nacionalidadTempMasAlta}.
+La cantidad de mayores de edad solteros fue de ${cantMayoresSolteros}.
+La cantidad de mujeres solteras o viudas fue de: ${mujeresSolterasViudas}.
+La cantidad de personas mayores a 60 años con más de 38º fue de ${mayoresConTemp}.
+El promedio de edad de las mujeres casadas fue de: ${promedioEdadCasadas}`);
 
 };
 
