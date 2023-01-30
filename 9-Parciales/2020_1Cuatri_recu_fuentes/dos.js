@@ -1,73 +1,4 @@
 
-function validarDato(nombre, min="not") {
-
-  let i=0;
-  let condition =  true;
-
-  do {
-      let datoI;
-      let mensajeAd;
-      let tipoDato;
-
-      switch(nombre) {
-          case "el material":
-              mensajeAd = `Puede ser "cal", "arena" o "cemento".`;
-              tipoDato = "string";
-              break;
-          case "la cantidad de bolsas":
-          case "el precio":  
-              mensajeAd = `Número mayor a 0.`;
-              tipoDato = "number";
-              break;
-      };
-
-      if(i==0) {
-          datoI = prompt(`Por favor, ingrese un dato para ${nombre}. ${mensajeAd}`);
-          i++;
-      }
-      else {
-          datoI = prompt(`El dato ingresado es inválido. Intentelo nuevamente. ${mensajeAd}`);
-      };
-
-      let checker;
-
-      //Si es un string
-      if(tipoDato == "string") {
-          
-          checker = /[^a-zA-Záéíóú]/gi;
-
-          if(checker.test(datoI) || typeof datoI != "string") {
-              continue;
-          };
-
-          if(datoI !="cal" && datoI !="arena" && datoI !="cemento") {
-                      continue;   
-          };
-
-      }
-      else {
-          checker = /[^0-9.]/g;
-
-          if(checker.test(datoI)) {
-              continue;
-          };
-
-          datoI = parseFloat(datoI);
-      
-          if(typeof min == "number" || isNaN(datoI)) {
-              if(datoI <= min) {
-                  continue;
-              }
-          };
-          };
-
-      condition = false;
-      return datoI;
-  }
-  while(condition);
-};
-
-
 function mostrar() {
 
   let descuento = 0;
@@ -98,10 +29,20 @@ function mostrar() {
           }
       }
 
-      let materialValidado = validarDato("el material");
-      let cantidadBolsasValidada = validarDato("la cantidad de bolsas", 0);
-      let precioValidado = validarDato("el precio", 0);
-      
+      let materialValidado = prompt("Por favor, ingrese un material. Puede ser cal, arena o cemento.");
+      while(materialValidado != "cal" && materialValidado != "cemento" && materialValidado != "arena") {
+        materialValidado = prompt("El dato ingresado es incorrecto. Debe ser cal, arena o cemento");
+      };
+
+      let cantidadBolsasValidada = parseInt(prompt("Por favor, ingrese la cantidad de bolsas. Debe ser superior a 0."));
+      while(cantidadBolsasValidada <= 0 || isNaN(cantidadBolsasValidada)) {
+        cantidadBolsasValidada = parseInt(prompt("El dato ingresado es incorrecto. Debe ser un número superior a 0"));
+      };
+
+      let precioValidado = parseFloat(prompt("Por favor, ingrese el precio por bolsa. Debe ser superior a 0."));
+      while(precioValidado <= 0 || isNaN(precioValidado)) {
+        precioValidado = parseFloat(prompt("El dato ingresado es incorrecto. Debe ser un número superior a 0"));
+      };
 
       if(i==1) {
           tipoPrecioMasAlto = materialValidado;
