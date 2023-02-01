@@ -38,7 +38,7 @@ function mostrar() {
         
         let checker = /[\W0-9_]/g;
 
-        while(checker.test(nombreValidado) || nombreValidado.length < 1) {
+        while(checker.test(nombreValidado) || nombreValidado.length <= 1 ) {
             nombreValidado=prompt("El dato ingresado es inválido. Por favor, intentelo nuevamente. Solo utilice letras");
         };
 
