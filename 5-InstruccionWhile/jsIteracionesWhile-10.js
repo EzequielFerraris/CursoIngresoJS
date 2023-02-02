@@ -1,90 +1,74 @@
-/*
-Al presionar el botón pedir  números  
-hasta que el usuario quiera, mostrar:
-1-Suma de los negativos.
-2-Suma de los positivos.
-3-Cantidad de positivos.
-4-Cantidad de negativos.
-5-Cantidad de ceros.
-6-Cantidad de números pares.
-7-Promedio de positivos.
-8-Promedios de negativos.
-9-Diferencia entre positivos y negativos, (positvos-negativos). */
-
 function mostrar(){
+
+	let sumaNegativos = 0;
+	let sumaPositivos = 0;
+	let cantidadPositivos = 0;
+	let cantidadNegativos = 0;
+	let cantidadCeros = 0;
+	let cantidadPares = 0;
+	let promedioPositivos = 0;
+	let promedioNegativos = 0;
+	let diferencia = 0;
+
 	let i = 0;
-	let arrPos = [];
-	let arrNeg = [];
-	let ceros = [];
-	let continuar = true;
-	let exp = new RegExp('si', 'i');
-
+	let condition = true;
 	do {
-		if(i != 0) {
-			let pregunta = prompt("¿Desea continuar agregando números?");
-			if(!exp.test(pregunta)) {
-				continuar = false;
-				break;
-			}
+		let pregunta;
+		if(i == 0) {
+			alert("Bienvenido. Aquí podrá ingresar los números que desee y obtener sus estadísticas.");
+			i++;
 		}
-		let dato = prompt("Ingrese un número entero: ");
-			dato = parseInt(dato);
-			if(dato == 0) {
-				ceros.push(dato);
-			}
-			else if(dato < 0) {
-				arrNeg.push(dato);
-			}
-			else{
-				arrPos.push(dato);
-			}
-			i++;	
-	}
-	while(continuar); //fin del while
+		else {
+			pregunta = prompt("¿Desea seguir agregando números?");
+			if(pregunta != "SI" && pregunta != "si" && pregunta != "Si") {
+				condition = false;
+				break;
+			};
+		};
 
-	let sumaNegativos;
-	let sumaPositivos;
-	let cantPositivos = arrPos.length;
-	let cantNegativos = arrNeg.length;
-	let cantCeros = ceros.length;
-	let nrosPares = [];
-	let promPositivos;
-	let promedioNeg;
-	let diferencia;
+		let numeroValidado = parseInt(prompt("Por favor, ingrese un número entero. Puede ser positivo o negativo"));
 
-	if(arrNeg.length == 0) {
-		sumaNegativos = 0;
-		promedioNeg = "No hay números positivos ingresados";
+		while(isNaN(numeroValidado)) {
+			numeroValidado = parseInt(prompt("El dato ingresado no es un número entero. Inténtelo nuevamente."));
+		};
+
+		if(numeroValidado < 0) {
+			sumaNegativos += numeroValidado;
+			cantidadNegativos++;
+		} 
+		else if (numeroValidado > 0) {
+			sumaPositivos += numeroValidado;
+			cantidadPositivos++;
+		}
+		else {
+			cantidadCeros++;
+		}
+
+		if(numeroValidado % 2 == 0) {
+			cantidadPares++;
+		};
 	}
-	else {
-		sumaNegativos = arrNeg.reduce((sum, x) => sum + x);
-		promedioNeg = (sumaNegativos / cantNegativos).toFixed(2);
-		nrosPares.push(arrNeg.filter((x) => {if(x % 2 == 0){return x}}));
+	while(condition);
+
+	if(cantidadPositivos > 0) {
+		promedioPositivos = (sumaPositivos / cantidadPositivos).toFixed(2)
 	};
-	if(arrPos.length == 0) {
-		sumaPositivos = 0;
-		promPositivos = "No hay números positivos ingresados";
-	}
-	else {
-		sumaPositivos = arrPos.reduce((sum, x) => sum + x);
-		promPositivos = (sumaPositivos / cantPositivos).toFixed(2);
-		nrosPares.push(arrPos.filter((x) => {if(x % 2 == 0){return x}}));
+	if(cantidadNegativos > 0) {
+		promedioNegativos = (sumaNegativos / cantidadNegativos).toFixed(2)
 	};
 
-	let cantNrosPares = nrosPares.flat().length;
-	diferencia = sumaPositivos + sumaNegativos;
-	
+	diferencia = sumaPositivos - sumaNegativos;
 
-	document.write(`1-Suma de los negativos: ${sumaNegativos}.<br>
-	2-Suma de los positivos: ${sumaPositivos}.<br>
-	3-Cantidad de positivos: ${cantPositivos}.<br>
-	4-Cantidad de negativos: ${cantNegativos}.<br>
-	5-Cantidad de ceros: ${cantCeros}.<br>
-	6-Cantidad de números pares: ${cantNrosPares}.<br>
-	7-Promedio de positivos: ${promPositivos}.<br>
-	8-Promedios de negativos: ${promedioNeg}.<br>
-	9-Diferencia entre positivos y negativos: ${diferencia}.<br>
-	10-Números pares ingresados: ${nrosPares}<br>`);
-
+	document.write(`Los datos obtenidos fueron: <br>
+1-Suma de los negativos: ${sumaNegativos} <br>
+2-Suma de los positivos: ${sumaPositivos} <br>
+3-Cantidad de positivos: ${cantidadPositivos} <br>
+4-Cantidad de negativos: ${cantidadNegativos} <br>
+5-Cantidad de ceros: ${cantidadCeros} <br>
+6-Cantidad de números pares: ${cantidadPares} <br>
+7-Promedio de positivos: ${promedioPositivos} <br>
+8-Promedios de negativos: ${promedioNegativos} <br>
+9-Diferencia entre positivos y negativos: ${diferencia} <br>`); 
 };
 
+//Alumno: Ferraris Ezequiel - División H
