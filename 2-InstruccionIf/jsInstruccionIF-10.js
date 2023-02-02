@@ -1,18 +1,20 @@
 function mostrar()
 {
-	//Genero el número RANDOM entre 1 y 10 
-	let min = 1;
-	let max = 10;
-	let random = Math.floor(Math.random() * (max - min)) + min;
+	let min;
+	let max;
+	let numeroRandom;
+
+	min = 1;
+	max = 10;
+	numeroRandom = Math.floor(Math.random() * (max - min)) + min;
 	
-	if(random < 4) {
-		alert(`Vamos, la próxima se puede. Nota: ${random}`);
+	if(numeroRandom < 4) {
+		alert(`Vamos, la próxima se puede. Nota: ${numeroRandom}`);
 	}
-	else if(random >= 4 && random < 9) {
-		alert(`APROBÓ.  Nota: ${random}`);
+	else if(numeroRandom >= 4 && numeroRandom < 9) {
+		alert(`APROBÓ.  Nota: ${numeroRandom}`);
 	}
 	else {
-		alert(`EXCELENTE.  Nota: ${random}`);
+		alert(`EXCELENTE.  Nota: ${numeroRandom}`);
 	};
-
-}//FIN DE LA FUNCIÓN
+};

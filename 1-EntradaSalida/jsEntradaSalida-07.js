@@ -8,29 +8,49 @@ ej.: "la Resta es 750"*/
 
 function sumar()
 {	
-	let numA = parseInt(document.getElementById("txtIdNumeroUno").value);
-	let numB = parseInt(document.getElementById("txtIdNumeroDos").value);
-	alert("La suma es " + (numA + numB));	
+	let numA;
+	let numB;
+
+	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
+
+	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+
+	alert(`La suma es ${numA + numB}`);	
 };
 
 function restar()
 {
-	let numA = parseInt(document.getElementById("txtIdNumeroUno").value);
-	let numB = parseInt(document.getElementById("txtIdNumeroDos").value);
-	alert("La diferencia es " + (numA - numB));
+	let numA;
+	let numB;
+
+	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
+	
+	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+
+	alert(`La diferencia es ${numA - numB}`);
 };
 
 function multiplicar()
 { 
-	let numA = parseInt(document.getElementById("txtIdNumeroUno").value);
-	let numB = parseInt(document.getElementById("txtIdNumeroDos").value);
-	alert("El producto es " + (numA * numB));
+	let numA;
+	let numB;
+
+	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
+	
+	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+
+	alert(`El producto es ${numA * numB}`);
 };
 
 function dividir()
 {
-	let numA = parseInt(document.getElementById("txtIdNumeroUno").value);
-	let numB = parseInt(document.getElementById("txtIdNumeroDos").value);
-	alert("El cociente es " + (numA / numB));
+	let numA; 
+	let numB;
+	
+	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
+	
+	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+
+	alert(`El cociente es ${numA / numB}`);
 };
 
