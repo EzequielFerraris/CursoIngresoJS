@@ -1,9 +1,14 @@
-function mostrar()
-{
-	let destino = document.getElementById("txtIdDestino").value;
-	let estacion = document.getElementById("txtIdEstacion").value;
-	let valorBase = 15000;
+function mostrar(){
+
+	let destino;
+	let estacion; 
+	let valorBase;
 	let precio;
+
+	destino = document.getElementById("txtIdDestino").value;
+	estacion = document.getElementById("txtIdEstacion").value;
+	valorBase = 15000;
+	precio;
 
 	switch(estacion) {
 		case "Invierno":
@@ -21,7 +26,6 @@ function mostrar()
 					precio = valorBase + valorBase * 0.2;
 					alert(`La estadía cuesta $${precio}`);
 					break;
-		
 		};
 		break;
 
@@ -58,7 +62,6 @@ function mostrar()
 			};
 		break;
 	};
+};
 
-	
-
-}//FIN DE LA FUNCIÓN
+//Alumno: Ferraris Ezequiel - División H

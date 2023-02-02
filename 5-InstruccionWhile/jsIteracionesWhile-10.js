@@ -11,8 +11,7 @@ hasta que el usuario quiera, mostrar:
 8-Promedios de negativos.
 9-Diferencia entre positivos y negativos, (positvos-negativos). */
 
-function mostrar()
-{
+function mostrar(){
 	let i = 0;
 	let arrPos = [];
 	let arrNeg = [];
@@ -87,5 +86,5 @@ function mostrar()
 	9-Diferencia entre positivos y negativos: ${diferencia}.<br>
 	10-Números pares ingresados: ${nrosPares}<br>`);
 
-}//FIN DE LA FUNCIÓN
+};
 

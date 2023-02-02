@@ -7,16 +7,15 @@ function mostrar()
 	let i = 0;
 	let suma = 0;
 	let continuar = true;
-	let exp = new RegExp('si', 'i');
 	let promedio = 0;
 
 	do {
 		if(i != 0) {
 			let pregunta = prompt("¿Desea continuar agregando números?");
-			if(!exp.test(pregunta)) {
+			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") {
 				continuar = false;
 				break;
-			}
+			};
 		};
 		let dato = prompt("Ingrese un número entero: ");
 			suma += parseInt(dato);
@@ -27,9 +26,9 @@ function mostrar()
 	document.getElementById("txtIdSuma").value = suma;
 	
 	if(i > 0) {
-		promedio = suma / i;
+		promedio = (suma / i).toFixed(2);
 	};
 	
 	document.getElementById("txtIdPromedio").value = promedio;
-
-}//FIN DE LA FUNCIÓN
+};
+//Alumno: Ferraris Ezequiel - División H

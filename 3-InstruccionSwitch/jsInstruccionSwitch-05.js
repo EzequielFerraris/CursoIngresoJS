@@ -1,8 +1,6 @@
-function mostrar()
-{
-	//tomo la hora
-
-	let hora = parseInt(document.getElementById("txtIdHora").value);
+function mostrar(){
+	let hora;
+	hora = parseInt(document.getElementById("txtIdHora").value);
 
 	switch(hora) {
 		case 7:
@@ -13,5 +11,6 @@ function mostrar()
 			alert("Es de mañana");
 			break;
 	};
+};
 
-}//FIN DE LA FUNCIÓN
+//Alumno: Ferraris Ezequiel - División H

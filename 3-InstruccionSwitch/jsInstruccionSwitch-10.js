@@ -1,9 +1,14 @@
-function mostrar()
-{
-	let destino = document.getElementById("txtIdDestino").value;
-	let estacion = document.getElementById("txtIdEstacion").value;
-	let mensaje1 = "No se viaja";
-	let mensaje2= "Se viaja";
+function mostrar(){
+	
+	let destino;
+	let estacion;
+	let mensaje1;
+	let mensaje2;
+
+	destino = document.getElementById("txtIdDestino").value;
+	estacion = document.getElementById("txtIdEstacion").value;
+	mensaje1 = "No se viaja";
+	mensaje2= "Se viaja";
 
 	switch(estacion) {
 		case "Invierno":
@@ -56,5 +61,6 @@ function mostrar()
 			};
 			break;
 	};
+};
 
-}//FIN DE LA FUNCIÓN
+//Alumno: Ferraris Ezequiel - División H

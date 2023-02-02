@@ -1,6 +1,4 @@
-/*
-al presionar el botón mostrar 10 repeticiones 
-con números DESCENDENTES, desde el 10 al 1.*/
+
 function mostrar()
 {
 	let i = 10;
@@ -8,6 +6,6 @@ function mostrar()
 		console.log(`${i}`);
 		i--;
 	};
-	
+};
 
-}//FIN DE LA FUNCIÓN
+//Alumno: Ferraris Ezequiel - División H

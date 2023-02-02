@@ -1,7 +1,8 @@
-function mostrar()
-{
-	//tomo el mes
-	let mesDelAño = document.getElementById("txtIdMes").value;
+function mostrar(){
+
+	let mesDelAño;
+
+	mesDelAño = document.getElementById("txtIdMes").value;
 	
 	switch(mesDelAño) {
 		case "Febrero":
@@ -22,6 +23,7 @@ function mostrar()
 		case "Noviembre":
 			alert("Tiene 30 días.");
 			break;
-	}; 
-	
-}//FIN DE LA FUNCIÓN
+	}; 	
+};
+
+//Alumno: Ferraris Ezequiel - División H

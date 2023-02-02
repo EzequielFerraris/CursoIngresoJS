@@ -1,6 +1,6 @@
-function mostrar()
-{
-	let destino = document.getElementById("txtIdDestino").value;
+function mostrar(){
+	let destino;
+	destino = document.getElementById("txtIdDestino").value;
 
 	switch(destino) {
 		case "Cataratas":
@@ -11,7 +11,6 @@ function mostrar()
 		case "Ushuaia":
 			alert("Frío");
 			break;
-}
-}
-
-//FIN DE LA FUNCIÓN
+	};
+};
+//Alumno: Ferraris Ezequiel - División H

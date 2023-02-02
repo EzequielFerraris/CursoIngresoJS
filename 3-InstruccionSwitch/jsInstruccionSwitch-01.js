@@ -1,7 +1,7 @@
-function mostrar()
-{
-	//tomo el mes
-	let mesDelAño = document.getElementById("txtIdMes").value;
+function mostrar(){
+	let mesDelAño; 
+
+	mesDelAño = document.getElementById("txtIdMes").value;
 
 	switch(mesDelAño) {
 		case "Enero":
@@ -17,5 +17,6 @@ function mostrar()
 			alert("Felices fiestas!!!");
 			break;
 	}; 
+};
 
-}//FIN DE LA FUNCIÓN
+//Alumno: Ferraris Ezequiel - División H

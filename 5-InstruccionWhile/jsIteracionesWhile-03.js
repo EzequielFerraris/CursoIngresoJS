@@ -1,17 +1,16 @@
 /*
 al presionar el botón pedir la CLAVE (ayuda: es utn750)*/
-function mostrar()
-{
+function mostrar(){
 	let log = true;
 	while(log) {
-		let claveIngresada = prompt("ingrese la clave de ingreso.");
+		let claveIngresada = prompt("Ingrese la clave de ingreso.");
 		if (claveIngresada == "utn750") {
-			alert("Bienvenido usuario. La contraseña es correcta.")
+			alert("Bienvenido usuario. La contraseña es correcta.");
 			log = false;
 		}
 		else {
-			alert("La contraseña es incorrecta.")
+			alert("La contraseña es incorrecta. Inténtelo nuevamente");
 		};
-	};
-	
-}//FIN DE LA FUNCIÓN
+	};	
+};
+//Alumno: Ferraris Ezequiel - División H

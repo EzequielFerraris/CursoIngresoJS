@@ -1,5 +1,4 @@
-function mostrar()
-{
+function mostrar(){
 	let i = 0;
 	let suma = 0;
 
@@ -7,8 +6,9 @@ function mostrar()
 		let dato = prompt("Ingrese un número entero: ");
 		suma += parseInt(dato);
 		i++;
-	}
+	};
 	
 	document.getElementById("txtIdSuma").value = suma;
 	document.getElementById("txtIdPromedio").value = suma / i;
-}//FIN DE LA FUNCIÓN
+};
+//Alumno: Ferraris Ezequiel - División H
