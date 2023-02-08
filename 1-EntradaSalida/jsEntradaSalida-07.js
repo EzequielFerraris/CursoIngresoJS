@@ -5,52 +5,86 @@ mostrar el resulto por medio de "ALERT"
 ej.: "la Resta es 750"*/ 
 
 
+function sumar(){	
+	var numA;
+	var numB; 
+	var suma;
+	var mensaje;
 
-function sumar()
-{	
-	let numA;
-	let numB;
+	numA = document.getElementById("txtIdNumeroUno").value;
+	numB= document.getElementById("txtIdNumeroDos").value;
 
-	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
+	numA = parseInt(numA);
+	numB = parseInt(numB);
+	suma = numA + numB;
 
-	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+	mensaje = "La suma es ";
+	mensaje += suma;
 
-	alert(`La suma es ${numA + numB}`);	
+	alert(mensaje);
 };
 
 function restar()
 {
-	let numA;
-	let numB;
-
-	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
+	var numA;
+	var numB;
+	var resta;
+	var mensaje;
 	
-	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+	numA = document.getElementById("txtIdNumeroUno").value;
+	numB= document.getElementById("txtIdNumeroDos").value;
 
-	alert(`La diferencia es ${numA - numB}`);
+	numA = parseInt(numA);
+	numB = parseInt(numB);
+
+	resta = numA - numB;
+
+	mensaje = "La diferencia es ";
+	mensaje += resta;
+
+	alert(mensaje);
 };
 
 function multiplicar()
 { 
-	let numA;
-	let numB;
+	var numA;
+	var numB;
+	var producto;
+	var mensaje;
 
-	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
-	
-	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+	numA = document.getElementById("txtIdNumeroUno").value;
+	numB= document.getElementById("txtIdNumeroDos").value;
 
-	alert(`El producto es ${numA * numB}`);
+	numA = parseInt(numA);
+	numB = parseInt(numB);
+
+	producto = numA * numB;
+
+	mensaje = "El producto es ";
+	mensaje += producto;
+
+	alert(mensaje);
+
 };
 
 function dividir()
 {
-	let numA; 
-	let numB;
-	
-	numA = parseInt(document.getElementById("txtIdNumeroUno").value);
-	
-	numB = parseInt(document.getElementById("txtIdNumeroDos").value);
+	var numA;
+	var numB;
+	var division;
+	var mensaje;
 
-	alert(`El cociente es ${numA / numB}`);
+	numA = document.getElementById("txtIdNumeroUno").value;
+	numB= document.getElementById("txtIdNumeroDos").value;
+
+	numA = parseInt(numA);
+	numB = parseInt(numB);
+
+	division = (numA / numB).toFixed(2);
+	mensaje = "El cociente es ";
+	mensaje += division;
+
+	alert(mensaje);
 };
 
+//Alumno: Ferraris Ezequiel - División H

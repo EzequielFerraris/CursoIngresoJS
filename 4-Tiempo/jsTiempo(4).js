@@ -1,8 +1,10 @@
-let miIntervalo ;
-let contador=0;
+var miIntervalo ;
+var contador;
+
 
 function inicio()
 {
+	contador=0;
 	alert("Función inicio.");
 	miIntervalo = setInterval(SegundosEnElAire, 2000);
 	

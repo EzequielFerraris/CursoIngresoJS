@@ -1,5 +1,6 @@
 function mostrar(){
-	let hora;
+	var hora;
+
 	hora = parseInt(document.getElementById("txtIdHora").value);
 
 	switch(hora) {
@@ -11,6 +12,7 @@ function mostrar(){
 			alert("Es de mañana");
 			break;
 	};
+	
 };
 
 //Alumno: Ferraris Ezequiel - División H

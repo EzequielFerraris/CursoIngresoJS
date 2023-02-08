@@ -1,4 +1,4 @@
-let miIntervalo;
+var miIntervalo;
 
 function inicio()
 {	

@@ -1,16 +1,18 @@
-/*
-Debemos lograr tomar el importe por ID ,
-transformarlo a entero (parseInt), luego
-mostrar el importe con un aumento del 10 %
-en el cuadro de texto "RESULTADO".*/
-
 function mostrarAumento() {
-	let sueldo;
-	let nuevoSueldo;
+	
+	var sueldo;
+	var nuevoSueldo;
+	var aumento;
 
-	sueldo = parseFloat(document.getElementById("txtIdSueldo").value);
+	aumento= prompt("Por favor, ingrese el porcentaje de aumento que desea ingresar (en porcentaje): ");
+	sueldo = document.getElementById("txtIdSueldo").value;
+	sueldo = parseFloat(sueldo);
 
-	nuevoSueldo = sueldo + (sueldo * 0.1);
+	aumento = parseInt(aumento);
+
+	nuevoSueldo = sueldo + (sueldo * aumento / 100);
 	document.getElementById("txtIdResultado").value = nuevoSueldo;
 
 };
+
+//ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H

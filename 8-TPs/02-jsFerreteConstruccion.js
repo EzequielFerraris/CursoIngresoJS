@@ -4,32 +4,63 @@ B.	mostrar la cantidad de alambre a comprar  si se ingresara el radio  de un ter
 C.	Para hacer un contrapiso de 1m x 1m se necesitan 2 bolsas de cemento y 3 de cal, debemos mostrar cuantas bolsas se necesitan de cada uno para las medidas que nos ingresen.
 */
 
-function Rectangulo () 
-{
-    let largoTerreno = parseFloat(document.getElementById("txtIdLargo").value);
-    let anchoTerreno = parseFloat(document.getElementById("txtIdAncho").value);
-    let perimetro = (largoTerreno + anchoTerreno) * 2;
-    let alambre = (perimetro * 3).toFixed(2);
+function Rectangulo () {
+
+    var largoTerreno;
+    var anchoTerreno;
+    var perimetro;
+    var alambre;
+
+    largoTerreno = document.getElementById("txtIdLargo").value;
+    anchoTerreno = document.getElementById("txtIdAncho").value;
+
+    largoTerreno = parseFloat(largoTerreno);
+    anchoTerreno = parseFloat(anchoTerreno);
+
+    perimetro = (largoTerreno + anchoTerreno) * 2;
+    alambre = (perimetro * 3);
+    alambre = alambre.toFixed(2);
     
-    alert(`Se necesitan ${alambre} metros de alambre`);
+    alert("Se necesitan " + alambre +  " metros de alambre");
 
 }
-function Circulo () 
-{
-    let radioTerreno = parseFloat(document.getElementById("txtIdRadio").value);
-	let perimetro = radioTerreno * 2 * Math.PI;
-    let alambre = (perimetro * 3).toFixed(2);
+function Circulo () {
+    var radioTerreno;
+    var perimetro;
+    var alambre;
 
-    alert(`Se necesitan ${alambre} metros de alambre`);
-}
-function Materiales () 
-{
-    let largoTerreno = parseFloat(document.getElementById("txtIdLargo").value);
-    let anchoTerreno = parseFloat(document.getElementById("txtIdAncho").value);
-    let area = largoTerreno * anchoTerreno;
+    radioTerreno = document.getElementById("txtIdRadio").value;
+    radioTerreno = parseFloat(radioTerreno);
+
+
+	perimetro = radioTerreno * 2 * Math.PI;
+    alambre = (perimetro * 3);
+    alambre = alambre.toFixed(2);
+
+    alert("Se necesitan " + alambre + "metros de alambre");
+};
+
+function Materiales () {
+    var largoTerreno;
+    var anchoTerreno;
+    var area;
+    var cemento;
+    var cal;
+
+    largoTerreno = document.getElementById("txtIdLargo").value;
+    largoTerreno = parseFloat(largoTerreno);
+    anchoTerreno = document.getElementById("txtIdAncho").value;
+    anchoTerreno = parseFloat(anchoTerreno);
+
+    area = largoTerreno * anchoTerreno;
+
     //Para las bolsas, devuelvo el entero cercano más grande para que no falte material.
-    let cemento = Math.ceil(area * 2);
-    let cal = Math.ceil(area * 3);
+    cemento = area * 2
+    cemento = Math.ceil(cemento);
+    cal = area * 3;
+    cal = Math.ceil(cal);
 
-    alert(`Se necesitan ${cemento} bolsas de cemento y ${cal} bolsas de cal`);
-}
+    alert("Se necesitan " + cemento + " bolsas de cemento y " + cal + " bolsas de cal");
+};
+
+//ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H

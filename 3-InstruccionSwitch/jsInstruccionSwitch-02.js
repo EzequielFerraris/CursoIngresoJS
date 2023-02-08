@@ -1,5 +1,6 @@
 function mostrar(){
-	let mesDelAño;
+	var mesDelAño;
+	var mensaje;
 
 	mesDelAño = document.getElementById("txtIdMes").value;
 
@@ -10,19 +11,22 @@ function mostrar(){
 		case "Abril":
 		case "Mayo":
 		case "Junio":
-			alert("Falta para el invierno.");
+			mensaje = "Falta para el invierno.";
 			break;
 		case "Julio":
 		case "Agosto":
-			alert("Abrigate que hace frío.");
+			mensaje = "Abrigate que hace frío.";
 			break;
 		case "Septiembre":
 		case "Octubre":
 		case "Noviembre":
 		case "Diciembre":
-			alert("Ya pasamos el frío, ahora calor!!!.");
+			mensaje = "Ya pasamos el frío, ahora calor!!!.";
 			break;
 	}; 
+
+	alert(mensaje);
+	
 };
 
 //Alumno: Ferraris Ezequiel - División H

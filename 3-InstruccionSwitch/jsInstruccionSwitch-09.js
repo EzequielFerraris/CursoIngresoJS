@@ -1,48 +1,48 @@
 function mostrar(){
 
-	let destino;
-	let estacion; 
-	let valorBase;
-	let precio;
+	var destino;
+	var estacion; 
+	var valorBase;
+	var precio;
+	var mensaje;
 
 	destino = document.getElementById("txtIdDestino").value;
 	estacion = document.getElementById("txtIdEstacion").value;
 	valorBase = 15000;
-	precio;
+
 
 	switch(estacion) {
 		case "Invierno":
 			switch(destino) {
 				case "Cataratas":
 				case "Cordoba":
-					precio = valorBase - valorBase * 0.10;
-					alert(`La estadía cuesta $${precio}`);
+					precio = valorBase; 
+					precio -= valorBase * 0.1;
 					break;
 				case "Mar del plata":
-					precio = valorBase - valorBase * 0.20;
-					alert(`La estadía cuesta $${precio}`);
+					precio = valorBase; 
+					precio -= valorBase * 0.2;
 					break;
 				case "Bariloche":
-					precio = valorBase + valorBase * 0.2;
-					alert(`La estadía cuesta $${precio}`);
+					precio = valorBase;
+					precio += valorBase * 0.2;
 					break;
 		};
-		break;
-
+			break;
 		case "Verano":
 			switch(destino) {
 				case "Cataratas":
 				case "Cordoba":
-					precio = valorBase + valorBase * 0.10;
-					alert(`La estadía cuesta $${precio}`);
+					precio = valorBase 
+					precio += valorBase * 0.1;
 					break;
 				case "Mar del plata":
-					precio = valorBase + valorBase * 0.20;
-					alert(`La estadía cuesta $${precio}`);
+					precio = valorBase 
+					precio += valorBase * 0.2;
 					break;
 				case "Bariloche":
-					precio = valorBase - valorBase * 0.20;
-					alert(`La estadía cuesta $${precio}`);
+					precio = valorBase 
+					precio -= valorBase * 0.2;
 					break;
 			};
 			break;
@@ -53,15 +53,19 @@ function mostrar(){
 				case "Cataratas":
 				case "Mar del plata":
 				case "Bariloche":
-					precio = valorBase + valorBase * 0.10;
-					alert(`La estadía cuesta $${precio}`);
+					precio = valorBase 
+					precio += valorBase * 0.1;
 					break;
 				case "Cordoba":
-					alert(`La estadía cuesta $${valorBase}`);
+					precio = valorBase;
 					break;
 			};
-		break;
+			break;
 	};
+
+	mensaje = "La estadía cuesta $" + precio;
+	alert(mensaje);
+
 };
 
 //Alumno: Ferraris Ezequiel - División H

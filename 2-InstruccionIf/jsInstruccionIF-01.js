@@ -1,14 +1,15 @@
 function mostrar(){
 
-	//tomo la edad  
-	let edad;
+	var edad;
+	var mensaje;
 
-	edad = parseInt(document.getElementById("txtIdEdad").value);
+	mensaje = "Niña bonita";
+	edad = document.getElementById("txtIdEdad").value;
+	edad = parseInt(edad);
 
 	if(edad == 15) {
-		alert("Niña bonita");
-	} 
-	else {
-		alert("Ok");
+		alert(mensaje);
 	};
 };
+
+//ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H

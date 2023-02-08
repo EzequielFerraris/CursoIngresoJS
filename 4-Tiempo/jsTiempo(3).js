@@ -1,5 +1,5 @@
-let miIntervalo ;
-let contador=0;
+var miIntervalo ;
+var contador=0;
 
 function inicio()
 {

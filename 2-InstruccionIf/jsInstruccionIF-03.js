@@ -1,13 +1,18 @@
 function mostrar() {
 	 
-	let edad;
-
-	edad = parseInt(document.getElementById("txtIdEdad").value);
+	var edad;
+	var mensaje;
+	
+	edad = document.getElementById("txtIdEdad").value;
+	edad = parseInt(edad);
 
 	if(edad >= 18) {
-		alert("Es mayor de edad");
+		mensaje = "mayor";
 	} 
 	else {
-		alert("Es menor de edad");
+		mensaje = "menor";
 	};
+
+	alert("Es " + mensaje + " de edad");
 };
+//ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H

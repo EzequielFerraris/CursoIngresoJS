@@ -1,22 +1,25 @@
 function mostrar(){
-	let mesDelAño; 
+	var mesDelAño;
+	var mensaje;
 
 	mesDelAño = document.getElementById("txtIdMes").value;
 
 	switch(mesDelAño) {
 		case "Enero":
-			alert("Que comiences bien el año!!");
+			mensaje = "Que comiences bien el año!!";
 			break;
 		case "Marzo":
-			alert("A clases!!");
+			mensaje = "A clases!!";
 			break;
 		case "Julio":
-			alert("Se vienen las vacaciones!!!");
+			mensaje = "Se vienen las vacaciones!!!";
 			break;
 		case "Diciembre":
-			alert("Felices fiestas!!!");
+			mensaje = "Felices fiestas!!!";
 			break;
 	}; 
+
+	alert(mensaje);
 };
 
 //Alumno: Ferraris Ezequiel - División H

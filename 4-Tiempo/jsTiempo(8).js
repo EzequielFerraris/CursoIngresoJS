@@ -1,7 +1,7 @@
-let miTemporizador ;
-let contador=0;
-let tiempoInicio;
-let tiempoFinal;
+var miTemporizador ;
+var contador=0;
+var tiempoInicio;
+var tiempoFinal;
 
 
 function inicio()

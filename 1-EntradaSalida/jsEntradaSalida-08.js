@@ -4,13 +4,20 @@ transformarlos a enteros (parseInt),realizar la operación correcta y
 mostrar el resto entre el dividendo y el divisor.
 ej.: "El resto es 0 ."*/
 function SacarResto(){
-	let numA;
-	let numB;
 
-	numA = parseInt(document.getElementById("txtIdNumeroDividendo").value);
-    
-	numB = parseInt(document.getElementById("txtIdNumeroDivisor").value);
+	var numA;
+	var numB;
+	var resto;
+
+	numA = document.getElementById("txtIdNumeroDividendo").value;
+	numB = document.getElementById("txtIdNumeroDivisor").value;
+
+	numA = parseInt(numA);
+	numB = parseInt(numB);
+
+	resto = numA % numB;
 	
-	alert(`El resto es ${numA % numB}`);
+	alert("El resto entre ambos es de " + resto);
 
 };
+//ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H

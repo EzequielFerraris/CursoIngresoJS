@@ -1,15 +1,16 @@
-/*
-Debemos lograr tomar el importe por ID.
-Transformarlo a entero (parseInt), luego
-mostrar el importe con un Descuento del 25 %
-en el cuadro de texto "RESULTADO"*/
-function mostrarAumento() {
-	let importe;
-	let nuevoImporte;
 
-	importe = parseFloat(document.getElementById("txtIdImporte").value);
-	nuevoImporte = importe - (importe * 0.25);
+function mostrarAumento() {
+	var importe;
+	var nuevoImporte;
+	var descuento;
+
+	descuento = prompt("Por favor, ingrese el porcentaje de descuento correspondiente (en porcentaje): ");
+
+	importe = document.getElementById("txtIdImporte").value;
+	importe = parseFloat(importe);
+	nuevoImporte = importe - (importe * descuento / 100);
 	
 	document.getElementById("txtIdResultado").value = nuevoImporte;
 	
 };
+//ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H
