@@ -9,60 +9,66 @@
 Desde  6 Intentos hasta 10:”falta técnica”
 Más de 10 intentos: “afortunado en el amor!!”.*/
 
-let random;
-let contador;
-min = 1;
-max = 100;
+var contador;
+var random;
 
-function comenzar()
-{
+function comenzar() {
+  
+  const MIN = 1;
+  const MAX = 100;
+
 //Genero el número RANDOM entre 1 y 100
-  random = Math.floor(Math.random() * (max - min)) + min;	
+  random = Math.random() * (MAX - MIN);	
+  random = Math.floor(random) + MIN
   contador = 0;
   document.getElementById("txtIdIntentos").value = 0;
-  alert(random);
+
 }
 
-function verificar()
-{
-  let numeroIngresado = parseInt(document.getElementById("txtIdNumero").value);
+function verificar() {
+  var numeroIngresado;
+  var mensaje;
 
+  numeroIngresado = document.getElementById("txtIdNumero").value;
+  numeroIngresado = parseInt(numeroIngresado);
   contador ++;
   document.getElementById("txtIdIntentos").value = contador;
   
   if(numeroIngresado == random) {
-	switch(contador) {
-		case 1:
-			alert(`Has ganado en 1 intento! Usted es un psíquico.`);
-			break;
-		case 2:
-			alert(`Has ganado en ${contador} intentos! Excelente percepción.`);
-			break;
-		case 3:
-			alert(`Has ganado en ${contador} intentos! Esto es suerte.`);
-			break;
-		case 4:
-			alert(`Has ganado en ${contador} intentos! Excelente técnica.`);
-			break;
-		case 5:
-			alert(`Has ganado en ${contador} intentos! Usted está en la media.`);
-			break;
-		case 6:
-		case 7:
-		case 8:
-		case 9:
-		case 10: 
-			alert(`Has ganado en ${contador} intentos! Falta técnica.`);
-			break;
-		default:
-			alert(`Has ganado en ${contador} intentos! Afortunado en el amor!!`);
-			break;
-	};
+    switch(contador) {
+      case 1:
+        mensaje = "Has ganado en 1 intento! Usted es un psíquico.";
+        break;
+      case 2:
+        mensaje = "Has ganado en " + contador + " intentos! Excelente percepción.";
+        break;
+      case 3:
+        mensaje = "Has ganado en " + contador + " intentos! Esto es suerte.";
+        break;
+      case 4:
+        mensaje = "Has ganado en " + contador + " intentos! Excelente técnica.";
+        break;
+      case 5:
+        mensaje = "Has ganado en " + contador + " intentos! Usted está en la media.";
+        break;
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+      case 10: 
+        mensaje = "Has ganado en " + contador + " intentos! Falta técnica.";
+        break;
+      default:
+        mensaje = "Has ganado en " + contador + " intentos! Afortunado en el amor!!";
+        break;
+    };
   }
   else if(numeroIngresado < random) {
-    alert("Falta para el número secreto");
+    mensaje ="Falta para el número secreto";
   }
   else {
-    alert("Se ha pasado del número secreto");
+    mensaje ="Se ha pasado del número secreto";
   };
+
+  alert(mensaje);
 }

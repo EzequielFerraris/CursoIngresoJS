@@ -1,6 +1,7 @@
 function mostrar(){
 	var hora;
-	hora = parseInt(document.getElementById("txtIdHora").value);
+	hora = document.getElementById("txtIdHora").value;
+	hora = parseInt(hora);
 
 	switch(hora) {
 		case 7:

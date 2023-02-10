@@ -20,7 +20,6 @@ function mostrar(){
 	};
 
 	alert(mensaje);
-	
 };
 
 //Alumno: Ferraris Ezequiel - División H

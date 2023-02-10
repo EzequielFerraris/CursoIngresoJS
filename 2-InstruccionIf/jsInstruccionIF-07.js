@@ -1,5 +1,4 @@
-function mostrar()
-{
+function mostrar() {
 	var edad; 
 	var estadoCivil;
 	var mensaje;
@@ -14,3 +13,5 @@ function mostrar()
 		alert(mensaje);
 	};	
 };
+
+//ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H

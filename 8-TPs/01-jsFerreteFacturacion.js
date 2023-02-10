@@ -9,6 +9,7 @@ function Sumar () {
     var precio2;
     var precio3;
     var suma;
+    var mensaje;
 
 	precio1 = document.getElementById("txtIdPrecioUno").value;
     precio2 = document.getElementById("txtIdPrecioDos").value;
@@ -19,8 +20,9 @@ function Sumar () {
     precio3 = parseFloat(precio3);
    
     suma = precio1 + precio2 + precio3;
-    
-    alert("La suma es: " + suma);
+    mensaje = "La suma es: " + suma;
+
+    alert(mensaje);
 
 };
 
@@ -31,6 +33,7 @@ function Promedio () {
     var precio3;
     var suma;
     var promedio;
+    var mensaje;
 
 	precio1 = document.getElementById("txtIdPrecioUno").value;
     precio2 = document.getElementById("txtIdPrecioDos").value;
@@ -42,8 +45,9 @@ function Promedio () {
    
     suma = precio1 + precio2 + precio3;
     promedio = (suma / 3).toFixed(2);
+    mensaje = "El promedio es: " + promedio;
 
-    alert("El promedio es: " + promedio);
+    alert(mensaje);
 };
 
 function PrecioFinal () {
@@ -52,6 +56,7 @@ function PrecioFinal () {
     var precio3;
     var suma;
     var resultado;
+    var mensaje;
 
 	precio1 = document.getElementById("txtIdPrecioUno").value;
     precio2 = document.getElementById("txtIdPrecioDos").value;
@@ -64,7 +69,8 @@ function PrecioFinal () {
     suma = precio1 + precio2 + precio3;
     
     resultado = (suma + (suma * 0.21)).toFixed(2);
-
-    alert("El precio final, más IVA, es: " + resultado);
+    mensaje = "El precio final, más IVA, es: " + resultado
+    
+    alert(mensaje);
 };
 //ALUMNO: FERRARIS EZEQUIEL - CLASE H

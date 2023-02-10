@@ -10,6 +10,7 @@ function Rectangulo () {
     var anchoTerreno;
     var perimetro;
     var alambre;
+    var mensaje;
 
     largoTerreno = document.getElementById("txtIdLargo").value;
     anchoTerreno = document.getElementById("txtIdAncho").value;
@@ -20,24 +21,26 @@ function Rectangulo () {
     perimetro = (largoTerreno + anchoTerreno) * 2;
     alambre = (perimetro * 3);
     alambre = alambre.toFixed(2);
+    mensaje = "Se necesitan " + alambre +  " metros de alambre";
     
-    alert("Se necesitan " + alambre +  " metros de alambre");
+    alert(mensaje);
 
 }
 function Circulo () {
     var radioTerreno;
     var perimetro;
     var alambre;
+    var mensaje;
 
     radioTerreno = document.getElementById("txtIdRadio").value;
     radioTerreno = parseFloat(radioTerreno);
 
-
 	perimetro = radioTerreno * 2 * Math.PI;
     alambre = (perimetro * 3);
     alambre = alambre.toFixed(2);
+    mensaje = "Se necesitan " + alambre + "metros de alambre";
 
-    alert("Se necesitan " + alambre + "metros de alambre");
+    alert(mensaje);
 };
 
 function Materiales () {
@@ -46,6 +49,7 @@ function Materiales () {
     var area;
     var cemento;
     var cal;
+    var mensaje;
 
     largoTerreno = document.getElementById("txtIdLargo").value;
     largoTerreno = parseFloat(largoTerreno);
@@ -53,14 +57,15 @@ function Materiales () {
     anchoTerreno = parseFloat(anchoTerreno);
 
     area = largoTerreno * anchoTerreno;
-
     //Para las bolsas, devuelvo el entero cercano más grande para que no falte material.
     cemento = area * 2
     cemento = Math.ceil(cemento);
     cal = area * 3;
     cal = Math.ceil(cal);
 
-    alert("Se necesitan " + cemento + " bolsas de cemento y " + cal + " bolsas de cal");
+    mensaje = "Se necesitan " + cemento + " bolsas de cemento y " + cal + " bolsas de cal";
+
+    alert(mensaje);
 };
 
 //ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H
