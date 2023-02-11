@@ -1,14 +1,15 @@
-function mostrar(){
-
+function mostrar()
+{
 	var mesDelAño;
 	var mensaje;
 
 	mesDelAño = document.getElementById("txtIdMes").value;
 	
-	switch(mesDelAño) {
+	switch(mesDelAño) 
+	{
 		case "Febrero":
 			mensaje = "Tiene 28 días.";
-			break;
+		break;
 		case "Enero":
 		case "Marzo":
 		case "Mayo":
@@ -17,13 +18,13 @@ function mostrar(){
 		case "Octubre":
 		case "Diciembre":
 			mensaje = "Tiene 31 días.";
-			break;
+		break;
 		case "Abril":
 		case "Junio":
 		case "Septiembre":
 		case "Noviembre":
 			mensaje = "Tiene 30 días.";
-			break;
+		break;
 	}; 	
 
 	alert(mensaje);

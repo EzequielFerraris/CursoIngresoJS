@@ -1,5 +1,5 @@
-function mostrar(){
-	
+function mostrar()
+{
 	var destino;
 	var estacion;
 	var mensaje1;
@@ -11,61 +11,56 @@ function mostrar(){
 	mensaje1 = "No se viaja";
 	mensaje2= "Se viaja";
 	
-
-	switch(estacion) {
+	switch(estacion) 
+	{
 		case "Invierno":
-			switch(destino) {
+			switch(destino) 
+			{
 				case "Cataratas":
 				case "Cordoba":
 				case "Mar del plata":
 					mensajeFinal = mensaje1;
-					break;
+				break;
 				case "Bariloche":
 					mensajeFinal = mensaje2;
-					break;
-		};
-			break;
+				break;
+			};
+		break;
 
 		case "Verano":
-			switch(destino) {
+			switch(destino) 
+			{
 				case "Cordoba":
 				case "Bariloche":
 					mensajeFinal = mensaje1;
-					break;
+				break;
 				case "Cataratas":
 				case "Mar del plata":
 					mensajeFinal = mensaje2;
-					break;
+				break;
 			};
-			break;
+		break;
 
 		case "Primavera":
-			switch(destino) {
+			switch(destino) 
+			{
 				case "Bariloche":
 					mensajeFinal = mensaje1;
-					break;
+				break;
 				case "Cataratas":
 				case "Cordoba":
 				case "Mar del plata":
 					mensajeFinal = mensaje2;;
-					break;
+				break;
 			};
-			break;
+		break;
 
 		case "Otoño":
-			switch(destino) {
-				case "Cataratas":
-				case "Cordoba":
-				case "Mar del plata":
-				case "Bariloche":
-					mensajeFinal = mensaje2;
-					break;
-			};
-			break;
+			mensajeFinal = mensaje2;
+		break;
 	};
 
 	alert(mensajeFinal);
-
 };
 
 //Alumno: Ferraris Ezequiel - División H

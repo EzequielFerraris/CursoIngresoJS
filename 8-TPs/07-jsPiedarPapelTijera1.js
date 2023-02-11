@@ -6,12 +6,14 @@ a su opción  y le informaremos si ganó, empató o perdió.
 */
 let random;
 let maquina;
-let jugador;
 
 function comenzar()
 {
-    random = Math.floor(Math.random() * 2) + 1;
-    switch(random) {
+    random = Math.random() * 2;
+    random = Math.floor(random) + 1;
+
+    switch(random) 
+    {
         case 1:
             maquina = "piedra";
             break;
@@ -22,50 +24,58 @@ function comenzar()
             maquina = "tijera";
             break;
     }
-}//FIN DE LA FUNCIÓN
+};//FIN DE LA FUNCIÓN
 
 function piedra()
 {
-	switch(maquina) {
+    let mensaje;
+	switch(maquina) 
+    {
         case "piedra":
-            alert("Empate!");
+            mensaje = "Empate!";
             break;
         case "papel":
-            alert("Derrota");
+            mensaje = "Derrota";
             break;
         case "tijera":
-            alert("Victoria!");
+            mensaje = "Victoria!";
             break;
     };
+    alert(mensaje);
+};//FIN DE LA FUNCIÓN
 
-}//FIN DE LA FUNCIÓN
 function papel()
 {   
-	switch(maquina) {
+    let mensaje;
+	switch(maquina) 
+    {
         case "piedra":
-            alert("Victoria!");
+            mensaje = "Victoria!";
             break;
         case "papel":
-            alert("Empate!");
+            mensaje = "Empate!";
             break;
         case "tijera":
-            alert("Derrota");
+            mensaje = "Derrota";
             break;
     };
+    alert(mensaje);
+};//FIN DE LA FUNCIÓN
 
-}//FIN DE LA FUNCIÓN
 function tijera()
 {
-	switch(maquina) {
+	let mensaje;
+    switch(maquina) 
+    {
         case "piedra":
-            alert("Derrota");
+            mensaje = "Derrota";
             break;
         case "papel":
-            alert("Victoria!");
+            mensaje = "Victoria!";
             break;
         case "tijera":
-            alert("Empate!");
+            mensaje = "Empate!";
             break;
     };
-
-}//FIN DE LA FUNCIÓN
+    alert(mensaje);
+};//FIN DE LA FUNCIÓN

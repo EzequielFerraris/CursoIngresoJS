@@ -9,11 +9,13 @@
 Desde  6 Intentos hasta 10:”falta técnica”
 Más de 10 intentos: “afortunado en el amor!!”.*/
 
+//DECLARO VARIABLES QUE AMBAS FUNCIONES UTILIZAN (VARIABLES GLOBALES)
 var contador;
 var random;
 
-function comenzar() {
-  
+function comenzar() 
+{
+//DETERMINO MÁXIMOS Y MÍNIMOS PARA EL NÚMERO RANDOM
   const MIN = 1;
   const MAX = 100;
 
@@ -25,17 +27,25 @@ function comenzar() {
 
 }
 
-function verificar() {
+function verificar() 
+{
+  //DECLARO FUNCIONES
   var numeroIngresado;
   var mensaje;
 
+  //TOMO DATOS Y LOS CONVIERTO A SUS VALORES CORRESPONDIENTES
   numeroIngresado = document.getElementById("txtIdNumero").value;
   numeroIngresado = parseInt(numeroIngresado);
+
+  //AUMENTO EL CONTADOR Y LO MUESTRO EN EL ELEMENTO DEL HTML
   contador ++;
   document.getElementById("txtIdIntentos").value = contador;
   
-  if(numeroIngresado == random) {
-    switch(contador) {
+  //DETERMINO SI EL NÚMERO INGRESADO ES IGUAL AL NÚMERO RANDOM Y EN BASE A LOS INTENTOS DETERMINO EL MENSAJE A MOSTRAR
+  if(numeroIngresado == random) 
+  {
+    switch(contador) 
+    {
       case 1:
         mensaje = "Has ganado en 1 intento! Usted es un psíquico.";
         break;
@@ -63,12 +73,17 @@ function verificar() {
         break;
     };
   }
-  else if(numeroIngresado < random) {
-    mensaje ="Falta para el número secreto";
-  }
-  else {
-    mensaje ="Se ha pasado del número secreto";
+  else //SI EL INTENTO NO COINCIDE CON EL NÚMERO RANDOM
+  {
+    if(numeroIngresado < random) 
+    {
+      mensaje ="Falta para el número secreto";
+    }
+    else 
+    {
+      mensaje ="Se ha pasado del número secreto";
+    };
   };
-
+  //MUESTRO EL MENSAJE AL USUARIO
   alert(mensaje);
 }

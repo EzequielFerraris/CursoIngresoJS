@@ -1,19 +1,20 @@
-function mostrar(){
-	
+function mostrar()
+{
 	var destino;
 	var mensaje;
 
 	destino = document.getElementById("txtIdDestino").value;
 
-	switch(destino) {
+	switch(destino) 
+	{
 		case "Cataratas":
 		case "Mar del plata":
 			mensaje = "Calor";
-			break;
+		break;
 		case "Bariloche":
 		case "Ushuaia":
 			mensaje = "Frío";
-			break;
+		break;
 	};
 	
 	alert(mensaje);

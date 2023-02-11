@@ -6,7 +6,8 @@ let ganadas = 0;
 let perdidas = 0;
 let empates = 0;
 
-function actualizar(gana, perd, emp) {
+function actualizar(gana, perd, emp) 
+{
 	document.getElementById("txtIdEmpatadas").value = emp;
 	document.getElementById("txtIdPerdidas").value = perd;
 	document.getElementById("txtIdGanadas").value = gana;
@@ -14,8 +15,11 @@ function actualizar(gana, perd, emp) {
 
 function comenzar()
 {
-    random = Math.floor(Math.random() * 2) + 1;
-    switch(random) {
+    random = Math.random() * 2;
+    random = Math.floor(random) + 1;
+    
+    switch(random) 
+    {
         case 1:
             maquina = "piedra";
             break;
@@ -30,7 +34,8 @@ function comenzar()
 
 function piedra()
 {
-	switch(maquina) {
+	switch(maquina) 
+    {
         case "piedra":
             alert("Empate!");
 			empates++;
@@ -45,11 +50,12 @@ function piedra()
             break;
     };
 	actualizar(ganadas, perdidas, empates);	
-
 }//FIN DE LA FUNCIÓN
+
 function papel()
 {   
-	switch(maquina) {
+	switch(maquina) 
+    {
         case "piedra":
             alert("Victoria!");
 			ganadas++;
@@ -64,11 +70,12 @@ function papel()
             break;
     };
 	actualizar(ganadas, perdidas, empates);
-
 }//FIN DE LA FUNCIÓN
+
 function tijera()
 {
-	switch(maquina) {
+	switch(maquina) 
+    {
         case "piedra":
             alert("Derrota");
 			perdidas++;
@@ -83,5 +90,4 @@ function tijera()
             break;
     };
 	actualizar(ganadas, perdidas, empates);
-
 }//FIN DE LA FUNCIÓN

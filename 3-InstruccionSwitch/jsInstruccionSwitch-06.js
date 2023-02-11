@@ -1,16 +1,20 @@
-function mostrar(){
+function mostrar()
+{
 	var hora;
+	var mensaje;
+
 	hora = document.getElementById("txtIdHora").value;
 	hora = parseInt(hora);
 
-	switch(hora) {
+	switch(hora) 
+	{
 		case 7:
 		case 8:
 		case 9:
 		case 10:
 		case 11:
 			mensaje = "Es de mañana";
-			break;
+		break;
 		case 12:
 		case 13:
 		case 14:
@@ -20,7 +24,7 @@ function mostrar(){
 		case 18:
 		case 19:
 			mensaje = "Es de tarde";
-			break;
+		break;
 		case 20:
 		case 21:
 		case 22:
@@ -34,14 +38,13 @@ function mostrar(){
 		case 5:
 		case 6:
 			mensaje = "Es de noche";
-			break;
+		break;
 		default:
 			mensaje = "Esa hora no existe";
-			break;
+		break;
 	};
 
 	alert(mensaje);
-	
 };
 
 //Alumno: Ferraris Ezequiel - División H
