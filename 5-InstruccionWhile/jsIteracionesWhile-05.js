@@ -1,17 +1,16 @@
 
-function mostrar(){
+function mostrar()
+{
+	var sexo;
+	
+	sexo = prompt("Por favor, ingrese su sexo ('f' para femenino y 'm' para masculino)");
 
-	let clave = true;
-	while(clave) {
-		let sexo = prompt("Por favor, ingrese su sexo ('f' para femenino y 'm' para masculino)");
-		if (sexo == "f" || sexo == "m") {
-			alert(`Se ha ingresado \"${sexo}\". Muchas gracias.`)
-			document.getElementById("txtIdSexo").value = sexo;
-			clave = false;
-		}
-		else {
-			alert("El dato ingresado no es válido. Inténtelo nuevamente.")
-		};
+	while(sexo != "f" && sexo != "m")
+	{
+		sexo = prompt("El dato ingresado no es válido. Inténtelo nuevamente. Ingrese su sexo ('f' para femenino y 'm' para masculino)");
 	};
+
+	document.getElementById("txtIdSexo").value = sexo;
+
 };
 //Alumno: Ferraris Ezequiel - División H

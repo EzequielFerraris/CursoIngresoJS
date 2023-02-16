@@ -1,15 +1,18 @@
 
-function mostrar(){
-	let clave = true;
-	while(clave) {
-		let numero = parseInt(prompt("ingrese un número entre 0 y 10."));
-		if (numero <=10 && numero >=0) {
-			alert(`El número es ${numero} y está entre 1 y 10.`);
-			clave = false;
-		}
-		else {
-			alert("No se trata de un número entre 1 y 10.");
-		};
+function mostrar()
+{
+	var valor; 
+	var mensaje;
+
+	valor = prompt("Ingrese un número entre 0 y 10.");
+	valor = parseInt(valor);
+
+	while(valor < 0 || valor > 9) 
+	{
+		valor = prompt("El número ingresado no está entre 0 y 9. Inténtelo nuevamente:");
 	};
+
+	mensaje = "El valor es correcto. Bienvenido."
+	alert(mensaje);
 };
 //Alumno: Ferraris Ezequiel - División H

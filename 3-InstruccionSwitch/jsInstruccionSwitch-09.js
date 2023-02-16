@@ -29,7 +29,7 @@ function mostrar()
 				case "Bariloche":
 					aumento = 20;
 				break;
-			};
+			}
 		break;
 		case "Verano":
 			switch(destino) 
@@ -44,7 +44,7 @@ function mostrar()
 				case "Bariloche":
 					descuento = 20;
 				break;
-			};
+			}
 		break;
 		case "Primavera":
 		case "Otoño":
@@ -55,7 +55,7 @@ function mostrar()
 				case "Bariloche":
 					aumento = 10;
 				break;
-			};
+			}
 		break;
 	};
 

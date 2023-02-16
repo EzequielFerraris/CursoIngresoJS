@@ -182,7 +182,7 @@ function CalcularPrecio ()
 */
 
 //SWITCH CON SWITCH ADENTRO
-/*
+
 function CalcularPrecio () 
 {
 
@@ -190,9 +190,10 @@ function CalcularPrecio ()
     var cantidad;
     var marca;
     var descuento;
-    var precioUnitario;
     var impuesto;
-    var importeTotal;
+    var importeBruto;
+    var importeConDescuento;
+    var importeFinal;
     var mensaje;
 
     cantidad = document.getElementById("txtIdCantidad").value;
@@ -200,70 +201,82 @@ function CalcularPrecio ()
 
     cantidad = parseInt(cantidad);
     
+    //OPCIONAL: SI EL USUARIO INGRESÓ UN NÚMERO NEGATIVO, MUESTRO 0 EN EL ÁREA E INFORMO POR ALERT QUE EL VALOR ERA INVÁLIDO
+    if(cantidad < 1 || isNaN(cantidad)) 
+    { 
+        document.getElementById("txtIdprecioDescuento").value = 0;
+        mensaje = "El número ingresado es inválido. Ingrese un número mayor o igual a 1"; 
+        alert(mensaje);
+    }
+    else 
+    {
         switch(cantidad) 
         {  
             case 1:
             case 2:
-                descuento = 0;
-                break;
+            break;
             case 3:
                 switch(marca) 
                 {
                     case "ArgentinaLuz":
-                        descuento = 0.15;
-                        break;
+                        descuento = 15;
+                    break;
                     case "FelipeLamparas":
-                        descuento = 0.1;
-                        break;
+                        descuento = 10;
+                    break;
                     default:
-                        descuento = 0.05;
-                        break;
+                        descuento = 5;
+                    break;
                 }
             case 4:
                 switch(marca) 
                 {
                     case "ArgentinaLuz":
                     case "FelipeLamparas":
-                        descuento = 0.25;
-                        break;
+                        descuento = 25;
+                    break;
                     default:
-                        descuento = 0.2;
-                        break;
+                        descuento = 20;
+                    break;
                 }
             case 5:
                 switch(marca) 
                 {
                     case "ArgentinaLuz":
-                        descuento = 0.4;
-                        break;
+                        descuento = 40;
+                    break;
                     default:
-                        descuento = 0.3;
-                        break;
+                        descuento = 30;
+                    break;
                 }
             default: 
-                descuento = 0.5;
-                break;
+                descuento = 50;
+            break;
         };
 
-        precioUnitario = PRECIO_BASE - (PRECIO_BASE * descuento);
-        importeTotal = precioUnitario * cantidad;
+        //CALCULO EL IMPORTE BRUTO Y LE REALIZO EL DESCUENTO CORRESPONDIENTE
+        importeBruto = cantidad * PRECIO_BASE;
+        descuento = importeBruto * descuento / 100;
+        importeConDescuento = importeBruto - descuento;
 
-    if(importeTotal > 120) 
-    {
-        impuesto = importeTotal * 0.1;
-        importeTotal += impuesto;
-        mensaje = "Usted pago $" + impuesto + " de IIBB.\nEl importe total a pagar es de $" + importeTotal;
-    }
-    else 
-    {
-        mensaje = "El importe total a pagar es de $" + importeTotal;
+        // CHEQUEO SI EL IMPORTE ES MAYOR A 120, SI ES ASÍ, APLICO UN IMPUESTO DEL 10% E INFORMO POR ALERT. 
+        if(importeConDescuento > 120) 
+        {
+            impuesto = 10;
+            impuesto = importeConDescuento * impuesto / 100;
+            importeFinal = importeConDescuento + impuesto;
+            mensaje = "Usted pago $" + impuesto + " de IIBB";
+            alert(mensaje);
+        }
+        else 
+        {
+            importeFinal = importeConDescuento;
+        };
+        
+        //MUESTRO EL RESULTADO FINAL UTILIZANDO EL ID DEL ELEMENTO "TEXT".
+        document.getElementById("txtIdprecioDescuento").value = importeFinal;
     };
-
-    document.getElementById("txtIdprecioDescuento").value = precioUnitario;
-    alert(mensaje);
 }; 
-
-*/
 
 // ALUMNO: FERRARIS EZEQUIEL MANUEL - DIVISIÓN H
 
@@ -384,6 +397,7 @@ function CalcularPrecio ()
 //ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H
 */
 
+/*
 //CENTRAL MARCAS
 
 function CalcularPrecio () 
@@ -524,9 +538,10 @@ function CalcularPrecio ()
 
 //ALUMNO: FERRARIS EZEQUIEL - DIVISIÓN H
 
+*/
+
 
 /*
-
 4.Para el departamento de iluminación:
 Tomando en cuenta que todas las lámparas están en oferta al mismo precio de $35 pesos final.
 A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
@@ -534,5 +549,4 @@ B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuent
 C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
 D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
 E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de ingresos brutos en informar del impuesto con el siguiente mensaje:
- ”Usted pago X de IIBB.”, siendo X el impuesto que se pagó. 
- */
+ ”Usted pago X de IIBB.”, siendo X el impuesto que se pagó. */

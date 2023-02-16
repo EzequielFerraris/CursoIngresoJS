@@ -1,10 +1,11 @@
-function mostrar(){
-
-	let i = 0;
-	while(i<10) {
-
-		console.log(i+1);
-		
+function mostrar()
+{
+	var i;
+	
+	i = 0;
+	while(i<10)  
+	{
+		console.log(i+1);	
 		i++;
 	};	
 };

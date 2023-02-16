@@ -1,45 +1,65 @@
 /*
 Al presionar el botón pedir números  hasta que el usuario quiera,
 sumar los que son positivos y multiplicar los negativos.*/
-function mostrar(){
-	let i = 0;
-	let flag = 0;
-	let suma = 0;
-	let mult = 1;
-	let continuar = true;
+function mostrar()
+{
 
-	do {
-		if(i != 0) {
-			let pregunta = prompt("¿Desea continuar agregando números?");
-			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") {
+	var i;
+	var flag;
+	var suma;
+	var mult;
+	var continuar;
+	var pregunta;
+	var datoIngresado;
+
+	i = 0;
+	flag = 0;
+	suma = 0;
+	mult = 1;
+	continuar = true;
+
+	while(continuar)
+	{
+		if(i != 0) 
+		{
+			pregunta = prompt("¿Desea continuar agregando números?");
+			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") 
+			{
 				continuar = false;
 				break;
-			};
+			}
 		};
-		let dato = prompt("Ingrese un número entero: ");
-			dato = parseInt(dato);
-			if (isNaN(dato)) {
-				alert("El dato ingresado no es un número");
-				continue;
+
+		datoIngresado = prompt("Ingrese un número entero: ");
+		datoIngresado = parseInt(datoIngresado);
+
+			while(isNaN(datoIngresado)) 
+			{
+				datoIngresado = prompt("El dato ingresado es incorrecto. Ingrese un número entero.");
+				datoIngresado = parseInt(datoIngresado);
 			}
-			else if (dato >= 0) {
-				suma += dato;
-			}
-			else {
-				mult *= dato;
+
+			if (datoIngresado < 0) 
+			{
+				mult *= datoIngresado;
 				flag = 1;
+			}
+			else 
+			{
+				suma += datoIngresado;
 			};	
-		i++;
+		i=1;
 	}
-	while(continuar);
 	
 	document.getElementById("txtIdSuma").value = suma;
 	
-	if(flag == 0) {
+	if(flag == 0) 
+	{
 		mult = 0;
 	};
 	
 	document.getElementById("txtIdProducto").value = mult;
+	
 };
 
 //Alumno: Ferraris Ezequiel - División H

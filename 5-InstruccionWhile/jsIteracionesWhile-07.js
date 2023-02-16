@@ -4,31 +4,45 @@ e informar la suma acumulada y el promedio.
 */
 function mostrar()
 {
-	let i = 0;
-	let suma = 0;
-	let continuar = true;
-	let promedio = 0;
+	var cantidadNumeros;
+	var numeroIngresado;
+	var suma;
+	var promedio;
+	var pregunta;
+	var condition;
 
-	do {
-		if(i != 0) {
-			let pregunta = prompt("¿Desea continuar agregando números?");
-			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") {
-				continuar = false;
+	cantidadNumeros = 0;
+	suma = 0;
+	promedio = 0;
+	condition = true;
+
+	while(condition)
+	{
+		if(cantidadNumeros > 0) 
+		{
+			pregunta = prompt("¿Desea seguir ingresando números? (SI/NO)");
+			if(pregunta != "si" && pregunta != "SI" && pregunta != "Si")
+			{
+				condition = false;
 				break;
-			};
+			}
+		}
+
+		numeroIngresado = prompt("Por favor, ingrese un número entero.");
+		numeroIngresado = parseInt(numeroIngresado);
+		while(isNaN(numeroIngresado)) 
+		{
+			numeroIngresado = prompt("El dato ingresado es inválido, por favor, ingrese un número entero.");
+			numeroIngresado = parseInt(numeroIngresado);
 		};
-		let dato = prompt("Ingrese un número entero: ");
-			suma += parseInt(dato);
-		i++;
+		suma += numeroIngresado;
+		cantidadNumeros++;
 	}
-	while(continuar);
 	
+	promedio = suma / cantidadNumeros;
+	promedio = promedio.toFixed(2);
+
 	document.getElementById("txtIdSuma").value = suma;
-	
-	if(i > 0) {
-		promedio = (suma / i).toFixed(2);
-	};
-	
 	document.getElementById("txtIdPromedio").value = promedio;
 };
 //Alumno: Ferraris Ezequiel - División H

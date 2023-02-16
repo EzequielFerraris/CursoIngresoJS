@@ -1,47 +1,62 @@
 
-function mostrar() {
+function mostrar() 
+{
 
-	let max;
-	let min;
+	var max;
+	var min;
+	var i;
+	var datoIngresado;
+	var pregunta;
 
-	let i = 0;
-	let continuar = true;
+	i = 0;
+	continuar = true;
 
-	do {
-		let dato;
+	while(true)
+	{
 		//PRIMERA ITERACIÓN. MENSAJE AL USUARIO
-		if(i==0) {
+		if(i==0) 
+		{
 			alert("Bienvenido, aquí podrá ingresar sus números para obtener el máximo y mínimo.");
 			i++;
 		}
-		else { //A PARTIR DE LA SEGUNDA ITERACIÓN. CONTINUAR O ROMPER LA ESTRUCTURA ITERATIVA
-			let pregunta = prompt("¿Desea continuar agregando números?");
-			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") {
-				continuar = false;
+		else 
+		{ //A PARTIR DE LA SEGUNDA ITERACIÓN. CONTINUAR O ROMPER LA ESTRUCTURA ITERATIVA
+			pregunta = prompt("¿Desea continuar agregando números?");
+			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") 
+			{
 				break;
-			};
+			}
 		};
+
 		//COMÚN A AMBOS CASOS. PIDO EL NÚMERO Y LO VALIDO
-		dato = prompt("Ingrese un número entero:");
-		dato = parseInt(dato);
-		if(isNaN(dato)) {
-			alert("El dato ingresado no es un número");
-			continue;
+		datoIngresado = prompt("Ingrese un número entero:");
+		datoIngresado = parseInt(datoIngresado);
+		while(isNaN(datoIngresado)) 
+		{
+			datoIngresado = prompt("El dato ingresado es inválido. Ingrese un número entero");
+			datoIngresado = parseInt(datoIngresado);
 		};
+
 		//SI EL DATO ES NÚMERO, O LO ASIGNO (SI ES EL PRIMER DATO), O LO COMPARO PARA ASIGNARLO SI CORRESPONDE.
-		if(isNaN(min)) {
-			min = dato;
-			max = dato;
+		if(isNaN(min)) 
+		{
+			min = datoIngresado;
+			max = datoIngresado;
 		}
-		else if (min > dato) {
-			min = dato;
-		} 
-		else if (max < dato) {
-			max = dato;
-		};	
-	}
-	while(continuar);
-	//REDERIZO LOS DATOS EN EL HTML
+		else
+		{
+			if (min > datoIngresado) 
+			{
+				min = datoIngresado;
+			}
+			if (max < datoIngresado) 
+			{
+				max = datoIngresado;
+			};	
+		}
+	};
+	
+	//MUESTRO LOS DATOS EN EL HTML
 	document.getElementById("txtIdMaximo").value = max;
 	document.getElementById("txtIdMinimo").value = min;
 }; 
