@@ -1,4 +1,5 @@
-function mostrar(){
+function mostrar()
+{
 
 	var sumaNegativos;
 	var sumaPositivos;
@@ -25,8 +26,10 @@ function mostrar(){
 	diferencia = 0;
 
 	i = 0;
+	
 	while(true)
 	{
+		//ESTO ESTÁ DE MÁS. NO HACER EN EL EXAMEN.
 		if(i == 0) 
 		{
 			alert("Bienvenido. Aquí podrá ingresar los números que desee y obtener sus estadísticas.");
@@ -34,12 +37,24 @@ function mostrar(){
 		}
 		else 
 		{
-			pregunta = prompt("¿Desea seguir agregando números?");
-			if(pregunta != "SI" && pregunta != "si" && pregunta != "Si") 
+			pregunta = confirm("¿Desea continuar agregando datos?");
+			if(!pregunta)
 			{
 				break;
-			};
-		};
+			}
+			
+			/*
+			Esto podría ser así también:
+
+			pregunta = prompt("¿Desea seguir agregando números?");
+			pregunta = pregunta.toLowerCase();
+			if(pregunta != "si") 
+			{
+				break;
+			}
+
+			*/
+		}
 
 		numeroValidado = prompt("Por favor, ingrese un número entero. Puede ser positivo o negativo");
 		numeroValidado = parseInt(numeroValidado);
@@ -66,25 +81,25 @@ function mostrar(){
 			{
 				cantidadCeros++;
 			}
-		};
+		}
 
 		if(numeroValidado % 2 == 0) 
 		{
 			cantidadPares++;
-		};
-	};
+		}
+	}
 
 	if(cantidadPositivos > 0) 
 	{
 		promedioPositivos = sumaPositivos / cantidadPositivos;
 		promedioPositivos = (promedioPositivos).toFixed(2)
-	};
+	}
 
 	if(cantidadNegativos > 0) 
 	{
 		promedioNegativos = sumaNegativos / cantidadNegativos;
 		promedioNegativos = (promedioNegativos).toFixed(2);
-	};
+	}
 
 	diferencia = sumaPositivos + sumaNegativos;
 

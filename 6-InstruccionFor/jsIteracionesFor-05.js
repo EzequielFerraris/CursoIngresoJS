@@ -1,13 +1,19 @@
 function mostrar()
 {
-	let numero;
-	for(let i=0; i > -1; i++) {
+	var numero;
+	var mensaje;
+
+	for(let i=0; i < 100; i++) 
+	{
 		numero = parseInt(prompt("Ingrese un número: "));
-		alert(`Usted ha ingresado el numero ${numero}`);
-		if(numero == 9) {
+		mensaje = "Usted ha ingresado el numero " + numero;
+		alert(mensaje);
+
+		if(numero == 9) 
+		{
 			break;
 		}
 	}
-	
+}
 
-}//FIN DE LA FUNCIÓN
+//Alumno: Ferraris Ezequiel - División H

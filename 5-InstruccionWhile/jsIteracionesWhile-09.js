@@ -1,7 +1,6 @@
 
 function mostrar() 
 {
-
 	var max;
 	var min;
 	var i;
@@ -9,7 +8,6 @@ function mostrar()
 	var pregunta;
 
 	i = 0;
-	continuar = true;
 
 	while(true)
 	{
@@ -21,12 +19,24 @@ function mostrar()
 		}
 		else 
 		{ //A PARTIR DE LA SEGUNDA ITERACIÓN. CONTINUAR O ROMPER LA ESTRUCTURA ITERATIVA
-			pregunta = prompt("¿Desea continuar agregando números?");
-			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") 
+			pregunta = confirm("¿Desea continuar agregando datos?");
+			if(!pregunta)
 			{
 				break;
 			}
-		};
+			
+			/*
+			Esto podría ser así también:
+
+			pregunta = prompt("¿Desea seguir agregando números?");
+			pregunta = pregunta.toLowerCase();
+			if(pregunta != "si") 
+			{
+				break;
+			}
+
+			*/
+		}
 
 		//COMÚN A AMBOS CASOS. PIDO EL NÚMERO Y LO VALIDO
 		datoIngresado = prompt("Ingrese un número entero:");
@@ -35,7 +45,7 @@ function mostrar()
 		{
 			datoIngresado = prompt("El dato ingresado es inválido. Ingrese un número entero");
 			datoIngresado = parseInt(datoIngresado);
-		};
+		}
 
 		//SI EL DATO ES NÚMERO, O LO ASIGNO (SI ES EL PRIMER DATO), O LO COMPARO PARA ASIGNARLO SI CORRESPONDE.
 		if(isNaN(min)) 
@@ -52,9 +62,9 @@ function mostrar()
 			if (max < datoIngresado) 
 			{
 				max = datoIngresado;
-			};	
+			}	
 		}
-	};
+	}
 	
 	//MUESTRO LOS DATOS EN EL HTML
 	document.getElementById("txtIdMaximo").value = max;

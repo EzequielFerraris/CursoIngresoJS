@@ -8,7 +8,6 @@ function mostrar()
 	var flag;
 	var suma;
 	var mult;
-	var continuar;
 	var pregunta;
 	var datoIngresado;
 
@@ -16,19 +15,18 @@ function mostrar()
 	flag = 0;
 	suma = 0;
 	mult = 1;
-	continuar = true;
-
-	while(continuar)
+	
+	while(true)
 	{
 		if(i != 0) 
 		{
 			pregunta = prompt("¿Desea continuar agregando números?");
-			if(pregunta != "Si" && pregunta != "SI" && pregunta != "si") 
+			pregunta = pregunta.toLowerCase();
+			if(pregunta != "si") 
 			{
-				continuar = false;
 				break;
 			}
-		};
+		}
 
 		datoIngresado = prompt("Ingrese un número entero: ");
 		datoIngresado = parseInt(datoIngresado);
@@ -47,7 +45,7 @@ function mostrar()
 			else 
 			{
 				suma += datoIngresado;
-			};	
+			}
 		i=1;
 	}
 	
@@ -56,7 +54,7 @@ function mostrar()
 	if(flag == 0) 
 	{
 		mult = 0;
-	};
+	}
 	
 	document.getElementById("txtIdProducto").value = mult;
 	

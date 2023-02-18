@@ -1,254 +1,157 @@
 
-//FUNCIONES VALIDADORAS
 
-function validarNombre() {
-	let i = 0;
-	let condicion = true;
-	do{
-		let nombreI;
-		//PRIMERA VEZ
-		if(i==0) {
-			nombreI = prompt("Por favor, ingrese su nombre:");
+function mostrar() 
+{
+	var personaValidada;
+	var edadValidada;
+	var sexoValidado;
+	var estadoCivilValidado;
+	var tempValidada;
+
+	var nombreConMayorTemp;
+	var mayorTemp;
+	var adultosViudos;
+	var cantHombresSolterosViudos;
+	var mayoresTempAlta;
+	var cantHombresSolteros;
+	var edadHombresSolterosAcc;
+	var promedioEdadHombresSolteros;
+	
+	var mensaje;
+	var i;
+	var pregunta;
+
+	adultosViudos = 0;
+	cantHombresSolterosViudos = 0;
+	mayoresTempAlta = 0;
+	cantHombresSolteros = 0;
+	edadHombresSolterosAcc = 0;
+	promedioEdadHombresSolteros = 0;
+	i=0;
+
+	while(true)
+	{
+		if(i!=0)
+		{
+			pregunta = confirm("¿Desea seguir cargando datos?");
+			if(!pregunta)
+			{
+				break;
+			}
+		}
+		else
+		{
 			i++;
 		}
-		else {
-			nombreI = prompt("El nombre ingresado no es válido. Intentelo nuevamente:");
-		};
-		//REG EXP PARA VALIDAR QUE SOLO INCLUYA LETRAS
 
-		let checker = new RegExp("\\W|[0-9]|\s", "g");
-
-		console.log(checker.test(nombreI));
-
-		if(checker.test(nombreI)) {
-			continue;
-		};
-		if(nombreI == "") {
-			continue;
-		};
-
-		nombreI= nombreI.toLowerCase();
-		
-		condicion = false;
-		return nombreI;
-	
-	
-	} while (condicion);
-
-
-
-};
-
-function validarEdad() {
-
-	let i = 0;
-	let condicion = true;
-	do{
-		let edadI;
-		//PRIMERA VEZ
-		if(i==0) {
-			edadI = prompt("Por favor, ingrese su edad:");
-			i++;
-		}
-		else {
-			edadI = prompt("La edad ingresada no es válida. Intentelo nuevamente:");
-		};
-		//REG EXP PARA VALIDAR QUE SOLO INCLUYA NUMEROS
-
-		let checker = new RegExp("[^0-9]");
-
-		if(checker.test(edadI)) {
-			continue;
-		};
-
-		edadI= parseInt(edadI);
-		if(edadI < 0 || edadI > 110 || isNaN(edadI)) {
-			continue;
-		};
-
-		condicion = false;
-		return edadI;
-	
-	
-	} while (condicion);
-
-
-};
-
-function validarSexo() {
-
-	let i = 0;
-	let condicion = true;
-	do{
-		let sexoI;
-		//PRIMERA VEZ
-		if(i==0) {
-			sexoI = prompt("Por favor, ingrese su sexo: (F/M)");
-			i++;
-		}
-		else {
-			sexoI = prompt("El dato ingresado no es válido. Intentelo nuevamente:");
-		};
-
-		if(sexoI != "F" && sexoI !="M") {
-			continue;
-		};
-
-		condicion = false;
-		return sexoI;
-	
-	
-	} while (condicion);
-
-
-};
-
-function validarEstadoCivil(){
-
-
-	let i = 0;
-	let condicion = true;
-	do{
-		let estadoCI;
-		//PRIMERA VEZ
-		if(i==0) {
-			estadoCI = prompt("Por favor, ingrese su estado civil: ('soltero', 'casado, 'viudo')");
-			i++;
-		}
-		else {
-			estadoCI = prompt("El dato ingresado no es válido. Intentelo nuevamente:");
-		};
-
-		if(estadoCI != "soltero" && estadoCI !="casado"  && estadoCI !="viudo") {
-			continue;
-		};
-
-		condicion = false;
-		return estadoCI;
-
-	
-	} while (condicion);
-
-
-};
-
-function validarTemperatura() {
-
-	let i = 0;
-	let condicion = true;
-	do{
-		let temperaturaI;
-		//PRIMERA VEZ
-		if(i==0) {
-			temperaturaI = prompt("Por favor, ingrese su temperatura actual en centígrados:");
-			i++;
-		}
-		else {
-			temperaturaI = prompt("La temperatura ingresada no es válida. Intentelo nuevamente:");
-		};
-		//REG EXP PARA VALIDAR QUE SOLO INCLUYA NUMEROS
-
-		let checker = new RegExp("[^0-9.]");
-
-		if(checker.test(temperaturaI)) {
-			continue;
+		personaValidada = prompt("Por favor, ingrese el nombre del pasajero.");
+		while(typeof(personaValidada) != "string" || personaValidada.length < 2)
+		{
+			personaValidada = prompt("El dato ingresado es inválido. Inténtelo nuevamente. Por favor, ingrese un nombre válido.");
 		}
 
-		temperaturaI= parseFloat(temperaturaI);
-		if(temperaturaI < 30 || temperaturaI > 45 || isNaN(temperaturaI)) {
-			continue;
-		};
+		edadValidada = prompt("Por favor, ingrese la edad del pasajero. Debe ser menor a 120");
+		edadValidada = parseInt(edadValidada);
+		while(isNaN(edadValidada) || edadValidada < 0 || edadValidada > 120)
+		{
+			edadValidada = prompt("El dato ingresado es inválido. Inténtelo nuevamente. Por favor, ingrese una edad entre 0 y 120");
+			edadValidada = parseInt(edadValidada);
+		}
 
-		condicion = false;
-		return temperaturaI;
+		sexoValidado = prompt("Por favor, ingrese el sexo del pasajero. Debe ser 'f' para femenino, o 'm' para masculino." );
+		while(sexoValidado != "f" && sexoValidado != "m")
+		{
+			sexoValidado = prompt("El dato ingresado es inválido. Inténtelo nuevamente. Debe ser 'f' para femenino, o 'm' para masculino.");
+		}
+
+		estadoCivilValidado = prompt("Por favor, ingrese el estado civil del pasajero. Debe ser soltero, viudo o casado");
+		while(estadoCivilValidado != "soltero" && estadoCivilValidado != "casado" && estadoCivilValidado != "viudo")
+		{
+			estadoCivilValidado = prompt("El dato ingresado es inválido. Inténtelo nuevamente. Debe ser soltero, viudo o casado");
+		}
+
+		tempValidada = prompt("Por favor, ingrese la temperatura del pasajero. Debe ser entre 30 y 50 grados.");
+		tempValidada = parseInt(tempValidada);
+		while(isNaN(tempValidada) || tempValidada < 30 || tempValidada > 50)
+		{
+			tempValidada = prompt("El dato ingresado es inválido. Inténtelo nuevamente. Debe ser entre 30 y 50 grados.");
+			tempValidada = parseInt(tempValidada);
+		}
+
+		if(i==1)
+		{
+		mayorTemp = tempValidada;
+		nombreConMayorTemp = personaValidada;
+		}
+		else 
+		{
+			if(mayorTemp < tempValidada)
+			{
+				mayorTemp = tempValidada;
+				nombreConMayorTemp = personaValidada;
+			}
+		}
+
+		if(sexoValidado == "m")
+		{
+			if(estadoCivilValidado == "soltero")
+			{
+				cantHombresSolterosViudos++;
+				edadHombresSolterosAcc += edadValidada;
+				cantHombresSolteros++;
+			}
+			else
+			{
+				if(estadoCivilValidado == "viudo")
+				{
+					cantHombresSolterosViudos++;
+				}
+			}
+		}
 	
-	} while (condicion);
+		if(estadoCivilValidado == "viudo")
+		{
+			adultosViudos++;
+		}
 
-};
+		if(edadValidada > 60 && tempValidada > 38)
+		{
+			mayoresTempAlta++;
+		}
 
-
-//FUNCIÓN PRINCIPAL
-
-function mostrar(){
-
-let temperaturaMasAlta = 0;
-let nombreTempAlta;
-let contadorViudosHyM = 0;
-let hombresSolteros = 0;
-let hombresViudos = 0;
-let terceraEdadTempAlta = 0;
-let edadAccHS = 0;
-
-
-let j = 0;
-let condicion = true;
-
-do {
-	if(j==0) {
-		alert("Bienvenido! Por favor, ingrese los datos solicitados.");
-		j++;
-	}
-	else {
-		let pregunta = prompt("¿Desea seguir cargando datos? (Si/No)");
-		if(pregunta != "Si" && pregunta != "si") {
-			condicion = false;
-			break;
-		};
-	};
-	
-	let nombreValidado = validarNombre();
-	let edadValidada = validarEdad();
-	let sexoValidado = validarSexo();
-	let estadoCivilValidado = validarEstadoCivil();
-	let temperaturaValidada = validarTemperatura();
-
-	//DETERMINAR SI LA TEMP INGRESADA ES LA MÁS ALTA Y SI ES ASÍ, GUARDARLA JUNTO AL NOMBRE;
-	if(temperaturaValidada > temperaturaMasAlta) {
-		temperaturaMasAlta = temperaturaValidada;
-		nombreTempAlta = nombreValidado;
-	};
-
-	//DETERMINAR VIUDOS: 
-
-	if(estadoCivilValidado == "viudo" && edadValidada >= 18) {
-		contadorViudosHyM++;
 	}
 
-	//DETERMINAR SI ES HOMBRE VIUDO O SOLTERO
-
-	if(sexoValidado == "M" && estadoCivilValidado == "viudo") {
-		hombresViudos++;
+	if(cantHombresSolteros > 0)
+	{
+		promedioEdadHombresSolteros = edadHombresSolterosAcc / cantHombresSolteros;
+		promedioEdadHombresSolteros = promedioEdadHombresSolteros.toFixed();
 	}
-	else if (sexoValidado == "M" && estadoCivilValidado == "soltero") {
-		hombresSolteros++;
-		edadAccHS += edadValidada;
-	};
-
-	// PERSONAS MAYORES CON TEMPERATURA ALTA
-	if(edadValidada >= 60 && temperaturaValidada >= 38) {
-		terceraEdadTempAlta++;
-	}
-
-} while(condicion);
 	
-	//CALCULOS CON LOS DATOS INGRESADOS
-	let totalViudosHyM = contadorViudosHyM;
-	let totalViudosSolteros = hombresViudos + hombresSolteros;
-	let promedioEdadHSolteros;
+	mensaje = "La persona con mayor temperatura fue " + nombreConMayorTemp + " con " + mayorTemp + " grados.";
+	mensaje += "\nLa cantidad de mayores viudos es de " + adultosViudos + ".";
+	mensaje += "\nLa cantidad de hombres solteros o viudos es de " + cantHombresSolterosViudos + ".";
+	mensaje +=  "\nLa cantidad de personas con más de 60 años y más de 38º de temperatura es de " + mayoresTempAlta + ".";
+	mensaje += "\nEl promedio de edad entre los hombres solteros es de " + promedioEdadHombresSolteros + ".";
+	alert(mensaje);
+
+}
 
 
-	//INFORMAR AL USUARIO
 
-	alert(`La persona con la temperatura más alta fue ${nombreTempAlta}, con ${temperaturaMasAlta} grados.`);
-	alert(`Se registraron un total de ${totalViudosHyM} personas viudas mayores de edad`);
-	alert(`Se registraron un total de ${totalViudosSolteros} hombres viudos o solteros`);
-	alert(`La cantidad de personas con 60 o más años y más de 38 grados de temperatura es de ${terceraEdadTempAlta}`);
-	if(hombresSolteros > 0) {
-		promedioEdadHSolteros = parseInt(edadAccHS / hombresSolteros);
-		alert(`El promedio de edad de los hombres solteros fue de ${promedioEdadHSolteros}`);
-    }
-	else {
-		alert(`No se registraron hombres solteros, por lo que no hay un promedio de edad de ese grupo.`);
-	};
+/*
 
-};
+En el ingreso a un viaje en avion nos solicitan nombre , edad, sexo("f" o "m") y estado civil("soltero", "casado" o "viudo")y temperatura corporal.
+				 </br>a)
+				El nombre de la persona con mas temperatura.
+				 </br>b)
+				Cuantos mayores de edad estan viudos
+				 </br>c)
+				La cantidad de hombres que hay solteros  o viudos.
+				 </br>d)
+				cuantas personas de la tercera edad( mas de 60 años) , tienen mas de 38 de temperatura
+
+				 </br>e)
+				El promedio de edad entre los hombres solteros.
+				</h2>
+
+*/

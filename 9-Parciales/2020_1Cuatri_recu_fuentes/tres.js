@@ -1,119 +1,162 @@
 
-function mostrar() {
-
-    let nacTempMasAlta;
-    let temperaturaMasAlta;
-    let mayoresSolteros = 0;
-    let mujeresSolterasViudas = 0;
-    let mayoresTempAlta = 0;
-    let cantidadMujeresCasadas = 0;
-    let mujeresCasadasEdadAcc = 0;
-    let promedioMujeresCasadas = "No se registraron mujeres casadas";
-
-    let condition = true;
-    let j = 0;
-    do {
-        let pregunta;
-        if(j==0) {
-            alert("Bienvenido. Aquí podrá cargar los datos de los pasajeros.");
-            j++;
-        }
-        else {
-            pregunta = prompt("¿Desea seguir ingresando datos? (SI/NO)");
-            
-            if(pregunta != "SI" && pregunta != "Si" && pregunta != "si") {
-                condition = false;
-                break;
-            };
-        };
-
-        let nombreValidado;
-        let nacionalidadValidada;
-        let edadValidada;
-        let sexoValidado;
-        let estadoCivilValidado;
-        let temperaturaValidada;
-
-        nombreValidado = prompt("Por favor, ingrese el nombre del pasajero. Solo puede utilizar letras");
-        
-        let checker = /[\W0-9_]/g;
-
-        while(checker.test(nombreValidado) || nombreValidado.length <= 1 ) {
-            nombreValidado=prompt("El dato ingresado es inválido. Por favor, intentelo nuevamente. Solo utilice letras");
-        };
-
-        nacionalidadValidada = prompt("Por favor, ingrese la nacionalidad del pasajero. Puede ser 'A' para Argentino, 'N' para nacionalizado o 'E' para extranjero.");
-
-        while(nacionalidadValidada != "A" && nacionalidadValidada != "N" && nacionalidadValidada != "E") {
-            nacionalidadValidada=prompt("El dato ingresado es inválido. Por favor, intentelo nuevamente. Puede ser 'A' para Argentino, 'N' para nacionalizado o 'E' para extranjero.");
-        };
-
-        edadValidada = parseInt(prompt("Por favor, ingrese la edad del pasajero. Solo puede utilizar números enteros mayores o iguales a 0"));
-        while(edadValidada < 0 || isNaN(edadValidada)) {
-            edadValidada=parseInt(prompt("El dato ingresado es inválido. Por favor, intentelo nuevamente. Solo utilice números"));
-        };
-
-        sexoValidado = prompt("Por favor, ingrese el sexo del pasajero (F/M)");
-        while(sexoValidado != "F" && sexoValidado != "M") {
-            sexoValidado=prompt("El dato ingresado es inválido. Por favor, ingrese F o M");
-        };
-
-        estadoCivilValidado = prompt("Por favor, ingrese el estado civil del pasajero. Opciones: soltero, viudo, casado");
-        while(estadoCivilValidado != "soltero" && estadoCivilValidado != "viudo" && estadoCivilValidado != "viudo") {
-            estadoCivilValidado=prompt("El dato ingresado es inválido. Por favor, intente nuevamente. Opciones: soltero, viudo, casado");
-        };
-
-        temperaturaValidada = parseInt(prompt("Por favor, ingrese la temperatura del pasajero. Solo puede utilizar números entre 30 y 50"));
-        while(temperaturaValidada < 30 || temperaturaValidada > 50 || isNaN(temperaturaValidada)) {
-            temperaturaValidada=parseInt(prompt("El dato ingresado es inválido. Por favor, intentelo nuevamente. Solo utilice números entre 30 y 50"));
-        };
+function mostrar() 
+{
+    var nombreValidado;
+    var nacionalidadValidada;
+    var edadValidada;
+    var sexoValidado;
+    var estadoCivilValidado;
+    var temperaturaValidada;
     
-        if(j == 1) {
-            nacTempMasAlta = nacionalidadValidada;
-            temperaturaMasAlta = temperaturaValidada;
-            j++;
-        }
-        else if (temperaturaMasAlta < temperaturaValidada) {
-            nacTempMasAlta = nacionalidadValidada;
-            temperaturaMasAlta = temperaturaValidada;
-        };
+    var temperaturaMasAlta
+    var temperaturaMasAlta;
+    var mayoresSolteros;
+    var mujeresSolterasViudas;
+    var promedioMujeresCasadas;
+    var cantidadMujeresCasadas;
+    var edadMujeresCasadasAcc;
+    var terceraEdadTemperaturaAlta;
 
-        if(edadValidada >= 18 && estadoCivilValidado == "soltero") {
+    var i;
+    var pregunta;
+    var mensaje;
+
+    mayoresSolteros = 0;
+    mujeresSolterasViudas = 0;
+    terceraEdadTemperaturaAlta = 0;
+    promedioMujeresCasadas =0;
+    cantidadMujeresCasadas =0;
+    edadMujeresCasadasAcc =0;
+    i = 0;
+
+
+    while(true)
+    {
+        if(i != 0)
+        {
+         pregunta = confirm("¿Desea seguir ingresando materiales?")
+        if(!pregunta)
+        {
+            break;
+        }
+        }
+        else
+        {
+            i++;
+        }
+
+        nombreValidado = prompt("Por favor, ingrese el nombre del pasajero.");
+        while(!nombreValidado || typeof(nombreValidado) != "string" || nombreValidado.length < 2)
+        {
+            nombreValidado = prompt("El dato ingresado es inválido. Inténtelo Nuevamente. Ingrese un nombre válido");
+        }
+        
+        nacionalidadValidada = prompt("Por favor, ingrese la nacionalidad del pasajero.");
+        while(!nacionalidadValidada || typeof(nacionalidadValidada) != "string" || nacionalidadValidada.length < 2)
+        {
+            nacionalidadValidada = prompt("El dato ingresado es inválido. Inténtelo Nuevamente. Ingrese una nacionalidad válida");
+        }
+
+        edadValidada = prompt("Por favor, ingrese la edad del pasajero. Debe ser mayor a 0 y menor a 120");
+        edadValidada = parseInt(edadValidada);
+        while(isNaN(edadValidada) || edadValidada < 1 || edadValidada > 120)
+        {
+            edadValidada = prompt("El dato ingresado es inválido. Inténtelo Nuevamente. Debe ser mayor a 0 y menor a 120");
+            edadValidada = parseInt(edadValidada);
+        }
+
+        sexoValidado = prompt("Por favor, ingrese el sexo del pasajero. Puede ser 'f' para femenino o 'm' para masculino");
+        while(sexoValidado != "f" && sexoValidado != "m")
+        {
+            sexoValidado = prompt("El dato ingresado es inválido. Inténtelo Nuevamente. Puede ser 'f' para femenino o 'm' para masculino");
+        }
+
+        estadoCivilValidado = prompt("Por favor, ingrese el estado civil del pasajero. Puede ser 'soltero', 'casado' o 'viudo'");
+        while(estadoCivilValidado != "soltero" && estadoCivilValidado != "casado" &&  estadoCivilValidado != "viudo")
+        {
+            estadoCivilValidado = prompt("El dato ingresado es inválido. Inténtelo Nuevamente. Puede ser 'soltero', 'casado' o 'viudo'");
+        }
+
+        temperaturaValidada = prompt("Por favor, ingrese la temperatura del pasajero. Debe ser mayor a 30º y menor a 50º");
+        temperaturaValidada = parseInt(temperaturaValidada);
+        while(isNaN(temperaturaValidada) || temperaturaValidada < 30 || temperaturaValidada > 50)
+        {
+            temperaturaValidada = prompt("El dato ingresado es inválido. Inténtelo Nuevamente. Debe ser mayor a 30º y menor a 50º");
+            temperaturaValidada = parseInt(temperaturaValidada);
+        }
+
+        if(i == 1)
+        {
+            temperaturaMasAlta = temperaturaValidada;
+            nacionalidadTemperaturaMasAlta = nacionalidadValidada
+        }
+        else
+        {
+            if(temperaturaMasAlta < temperaturaValidada)
+            {
+                temperaturaMasAlta = temperaturaValidada;
+                nacionalidadTemperaturaMasAlta = nacionalidadValidada
+            }
+        }
+        
+        if(edadValidada > 17 && estadoCivilValidado == "soltero")
+        {
             mayoresSolteros++;
-        };
-        
-        if(sexoValidado =="F") {
-            if(estadoCivilValidado == "soltero" || estadoCivilValidado == "viudo") {
-                mujeresSolterasViudas++;
-            } 
-            else {
-            cantidadMujeresCasadas++;
-            mujeresCasadasEdadAcc += edadValidada;
-            };
         }
 
-        if(edadValidada > 60 && temperaturaValidada > 38) {
-            mayoresTempAlta++;
-        };
-    }    
-    while(condition);
-    
-    switch(nacTempMasAlta) {
-        case "A":
-            nacTempMasAlta = "argentina";
-            break;
-        case "E":
-            nacTempMasAlta = "extranjera";
-            break;
-        case "N":
-            nacTempMasAlta = "nacionalizada";
-            break;
-    };
+        if(sexoValidado == "f")
+        {
+            if(estadoCivilValidado == "soltero" || estadoCivilValidado == "viudo")
+            {
+                mujeresSolterasViudas++;
+            }
+            else
+            {
+                cantidadMujeresCasadas++;
+                edadMujeresCasadasAcc += edadValidada;
+            }
+        }
+
+        if(edadValidada > 60 && temperaturaValidada > 38)
+        {
+            terceraEdadTemperaturaAlta++;
+        }
+
+
+    }
+
+    mensaje = "La persona con mayor temperatura es de nacionalidad " + nacionalidadTemperaturaMasAlta + ".";
+    mensaje += "\nLa cantidad de mayores de edad solteros es de " + mayoresSolteros + ".";
+    mensaje += "\nLa cantidad de mujeres solteras o viudas es de " + mujeresSolterasViudas + ".";
+    mensaje += "\nLa cantidad de personas mayores a 60 años con alta temperatura es de " + terceraEdadTemperaturaAlta + ".";
 
     if(cantidadMujeresCasadas > 0) {
-        promedioMujeresCasadas = (mujeresCasadasEdadAcc / cantidadMujeresCasadas).toFixed(2);
-    };
+        promedioMujeresCasadas = edadMujeresCasadasAcc / cantidadMujeresCasadas;
+        promedioMujeresCasadas = promedioMujeresCasadas.toFixed(2);
+        mensaje += "\nEl promedio de edad de las mujeres casadas es de: " + promedioMujeresCasadas + ".";
+    }
+    else
+    {
+        mensaje += "\nNo se registraron mujeres casadas";
+    }
+    
+    alert(mensaje);
+}
 
-    alert(`La nacionalidad de la persona con temperatura más alta es ${nacTempMasAlta}. La cantidad de mayores de edad solteros es de ${mayoresSolteros}. La cantidad de mujeres solteras o viudas es de ${mujeresSolterasViudas}. La cantidad de personas mayores a 60 que registraron temperaturas mayores a 38º fue de ${mayoresTempAlta}. El promedio de edad de las mujeres casadas es de ${promedioMujeresCasadas}`);
+//Alumno: Ferraris Ezequiel - División H
 
-};
+/*
+En el ingreso a un viaje en avión nos solicitan nombre, nacionalidad , edad, sexo("f" o "m") y estado civil("soltero", "casado" o "viudo")y temperatura corporal.
+				 </br>a)
+				la Nacionalidad de la persona con mas temperatura.
+				 </br>b)
+				Cuantos mayores de edad( más  de 17) estan solteros
+				 </br>c)
+				La cantidad de Mujeres que hay solteras  o viudas.
+				 </br>d)
+				cuantas personas de la tercera edad( mas de 60 años) , tienen mas de 38 de temperatura
+
+				 </br>e)
+				El promedio de edad entre las mujeres casadas.
+
+*/

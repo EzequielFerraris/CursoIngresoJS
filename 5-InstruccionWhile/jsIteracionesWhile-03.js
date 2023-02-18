@@ -44,7 +44,7 @@ function mostrar()
 	else
 	{
 		mensaje = "La contraseña es correcta. Bienvenido!"
-	}
+	};
 	
 	alert(mensaje);
 };

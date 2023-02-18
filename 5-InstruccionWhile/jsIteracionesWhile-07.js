@@ -2,6 +2,7 @@
 Al presionar el botón pedir  números  hasta que el USUARIO QUIERA 
 e informar la suma acumulada y el promedio.
 */
+
 function mostrar()
 {
 	var cantidadNumeros;
@@ -9,24 +10,31 @@ function mostrar()
 	var suma;
 	var promedio;
 	var pregunta;
-	var condition;
 
 	cantidadNumeros = 0;
 	suma = 0;
 	promedio = 0;
-	condition = true;
 
-	while(condition)
+	while(true)
 	{
 		if(cantidadNumeros > 0) 
 		{
-			pregunta = prompt("¿Desea seguir ingresando números? (SI/NO)");
-			if(pregunta != "si" && pregunta != "SI" && pregunta != "Si")
+			pregunta = confirm("¿Desea seguir ingresando números?")
+			if(!pregunta)
 			{
-				condition = false;
 				break;
 			}
 		}
+
+		//Esto originalmente era:
+		/*
+		pregunta = prompt("¿Desea seguir ingresando números? (SI/NO)");
+			pregunta = pregunta.toLowerCase();
+			if(pregunta != "si")
+			{
+				break;
+			}
+		*/
 
 		numeroIngresado = prompt("Por favor, ingrese un número entero.");
 		numeroIngresado = parseInt(numeroIngresado);
@@ -34,7 +42,8 @@ function mostrar()
 		{
 			numeroIngresado = prompt("El dato ingresado es inválido, por favor, ingrese un número entero.");
 			numeroIngresado = parseInt(numeroIngresado);
-		};
+		}
+		
 		suma += numeroIngresado;
 		cantidadNumeros++;
 	}
@@ -45,4 +54,5 @@ function mostrar()
 	document.getElementById("txtIdSuma").value = suma;
 	document.getElementById("txtIdPromedio").value = promedio;
 };
+
 //Alumno: Ferraris Ezequiel - División H

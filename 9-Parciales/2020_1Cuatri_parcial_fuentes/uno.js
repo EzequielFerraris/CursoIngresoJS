@@ -1,103 +1,163 @@
+/*
+Debemos realizar la carga de 5(cinco) productos de prevención de contagio, <br>
+			de cada una debo obtener los siguientes datos: <br>
+			el tipo (validar "barbijo" , "jabón" o "alcohol") , <br>
+			el precio (validar entre 100 y 300),<br>
+			la cantidad de unidades (no puede ser 0 o negativo y no debe superar las 1000 unidades), <br>
+			 la Marca y el fabricante. <br>
+			Se debe Informar al usuario lo siguiente:<br>
 
-function mostrar () {
+			a) Del más barato de los alcohol, la cantidad de unidades y el fabricante<br>
+			b) Del tipo con mas unidades, el promedio por compra <br>
+			c) Cuántas unidades de jabones hay en total 
+*/
 
-    let precioJabonMasCaro = 0;
-    let cantidadJabonesMasCaros = 0;
-    let fabricanteJabonMasCaro = "ninguno";
-    let cantidadJabones = 0;
-    let cantidadBarbijos = 0;
-    let cantidadAlcohol = 0;
-    let comprasJabones = 0;
-    let comprasAlcohol = 0;
-    let comprasBarbijos = 0;
-    let cantidadMasComprado;
-    let elementoMasComprado;
-    let promedioMasComprado;
+function mostrar () 
+{
+  var tipoValidado;
+  var precioValidado;
+  var cantidadValidada;
+  var marcaValidada;
+  var fabricanteValidado;
 
-    for(let i = 0; i<5; i++) {
+  var alcoholMasBaratoPrecio;
+  var alcoholMasBaratoCantidad;
+  var alcoholMasBaratoFabricante;
+  var cantidadAlcohol;
+  var cantidadBarbijos;
+  var cantidadJabon;
+  var comprasAlcohol;
+  var comprasBarbijos;
+  var comprasJabon;
+  var tipoMasComprado;
+  var cantidadMasComprada;
+  var promedioMasComprado;
+  var comprasProductoMasComprado;
+  
+  var mensaje;
+  var mensajeLoop;
 
-      if(i==0) {
-        alert("Bienvenido, aquí puede registrar los insumos comprados.");
-      }
-      else {
-        alert(`A continuación podrá cargar el producto número ${i+1}`);
-      };
+  alcoholMasBaratoPrecio = "No se ha comprado alcohol";
+  cantidadAlcohol = 0;
+  cantidadBarbijos = 0;
+  cantidadJabon = 0;
+  comprasAlcohol = 0;
+  comprasBarbijos = 0;
+  comprasJabon = 0;
 
-      let productoValidado;
-      let precioValidado;
-      let cantidadValidada;
-      let marcaValidada;
-      let fabricanteValidado;
 
-      productoValidado = prompt(`Por favor, ingrese el insumo a comprar. Puede ser "jabón", "alcohol" o "barbijos"`);
-      while(productoValidado != "barbijos" && productoValidado != "alcohol" && productoValidado != "jabón") {
-        productoValidado = prompt(`El dato ingresado es inválido, intentelo nuevamente.  Puede ser "jabón", "alcohol" o "barbijos"`);
-      };
+  for(let i = 0; i< 5; i++)
+  {
+    mensajeLoop = "A continuación podrá ingresar el producto número " + (i + 1);
+    alert(mensajeLoop);
 
-      precioValidado = parseFloat(prompt(`Por favor, ingrese el precio del insumo. Debe ser mayor a 100 y menor a 300`));
-      while(isNaN(precioValidado) || precioValidado < 100 || precioValidado > 300) {
-        precioValidado = prompt("El dato ingresado es inválido, intentelo nuevamente.  Debe ser mayor a 100 y menor a 300");
-      };
+    tipoValidado = prompt("Por favor, ingrese el producto a comprar. Puede ser barbijo, alcohol o jabón");
+    tipoValidado = tipoValidado.toLowerCase();
+    while(tipoValidado != "jabón" && tipoValidado != "alcohol" && tipoValidado != "barbijo")
+    {
+      tipoValidado = prompt("El dato ingresado es inválido. Igréselo nuevamente. Puede ser barbijo, alcohol o jabón");
+      tipoValidado = tipoValidado.toLowerCase();
+    }
 
-      cantidadValidada = parseInt(prompt(`Por favor, ingrese la cantidad a comprar. Debe ser entera, mayor a 0 y menor a 1000`));
-      while(isNaN(cantidadValidada) || cantidadValidada < 0 || cantidadValidada > 1000) {
-        cantidadValidada = prompt("El dato ingresado es inválido, intentelo nuevamente. Debe ser entera, mayor a 0 y menor a 1000");
-      };
+    precioValidado = prompt("Por favor, ingrese el precio del producto a comprar. Debe ser mayor a 0.");
+    precioValidado = parseFloat(precioValidado);
+    while(isNaN(precioValidado) || precioValidado <= 0)
+    {
+      precioValidado = prompt("El dato ingresado es inválido. Igréselo nuevamente. Debe ser mayor a 0");
+      precioValidado = parseFloat(precioValidado);
+    }
 
-      marcaValidada = prompt(`Por favor, ingrese la marca del insumo. Debe contener solo letras.`);
-      let checker = /[^a-zA-Z]/gi
-      while(marcaValidada.length < 1 || checker.test(marcaValidada)) {
-        marcaValidada = prompt("El dato ingresado es inválido, intentelo nuevamente. Debe contener solo letras.");
-      };
+    cantidadValidada = prompt("Por favor, ingrese la cantidad a comprar. Debe ser mayor a 0");
+    cantidadValidada = parseInt(cantidadValidada);
+    while(isNaN(cantidadValidada) || cantidadValidada < 1)
+    {
+      cantidadValidada = prompt("El dato ingresado es inválido. Igréselo nuevamente. Debe ser mayor a 0");
+      cantidadValidada = parseInt(cantidadValidada);
+    }
 
-      fabricanteValidado = prompt(`Por favor, ingrese el fabricante del producto. Debe contener solo letras`);
-      while(fabricanteValidado.length < 1 || checker.test(fabricanteValidado)) {
-        fabricanteValidado = prompt("El dato ingresado es inválido, intentelo nuevamente. Debe contener solo letras");
-      };
+    marcaValidada = prompt("Por favor, ingrese la marca del producto a comprar");
+    while(typeof(marcaValidada) != "string" || marcaValidada.length < 1)
+    {
+      marcaValidada = prompt("El dato ingresado es inválido. Por favor, ingrese la marca del producto a comprar");
+    }
 
-      switch(productoValidado) {
-        case "jabón":
-          cantidadJabones += cantidadValidada;
-          comprasJabones++;
-          
-          if(precioJabonMasCaro == 0) {
-            precioJabonMasCaro = precioValidado;
-            cantidadJabonesMasCaros = cantidadValidada;
-            fabricanteJabonMasCaro = fabricanteValidado;
+    fabricanteValidado = prompt("Por favor, ingrese el producto a comprar. Puede ser barbijo, alcohol o jabón");
+    while(typeof(fabricanteValidado) != "string" || fabricanteValidado.length < 1)
+    {
+      fabricanteValidado = prompt("El dato ingresado es inválido. Igréselo nuevamente. Debe ser un fabricante válido");
+    }
+  
+    switch(tipoValidado)
+    {
+      case "jabón":
+        comprasJabon++;
+        cantidadJabon+= cantidadValidada;
+
+      break;
+      case "alcohol":
+        comprasAlcohol++;
+        cantidadAlcohol += cantidadValidada;
+        if(cantidadAlcohol == 0)
+        {
+          alcoholMasBaratoPrecio = precioValidado;
+          alcoholMasBaratoCantidad = cantidadValidada;
+          alcoholMasBaratoFabricante = fabricanteValidado;
+        }
+        else
+        {
+          if(alcoholMasBaratoPrecio > precioValidado)
+          {
+            alcoholMasBaratoPrecio = precioValidado;
+            alcoholMasBaratoCantidad = cantidadValidada;
+            alcoholMasBaratoFabricante = fabricanteValidado;
           }
-          else if (precioJabonMasCaro < precioValidado) {
-            precioJabonMasCaro = precioValidado;
-            cantidadJabonesMasCaros = cantidadValidada;
-            fabricanteJabonMasCaro = fabricanteValidado;
-          };
-          break;
-        case "barbijos":
-          cantidadBarbijos += cantidadValidada;
-          comprasBarbijos++;
-          break;
-        case "alcohol":
-          cantidadAlcohol += cantidadValidada;
-          comprasAlcohol++;
-          break;
-      };
+        }
 
-    };
+      break;
+      case "barbijo":
+        comprasBarbijos++;
+        cantidadBarbijos+= cantidadValidada;
 
-    cantidadMasComprado = Math.max(cantidadAlcohol, cantidadBarbijos, cantidadJabones);
-    
-    if(cantidadMasComprado == cantidadAlcohol) {
-      elementoMasComprado = "alcohol";
-      promedioMasComprado = (cantidadAlcohol / comprasAlcohol).toFixed(2);
+      break;
     }
-    else if (cantidadMasComprado == cantidadBarbijos) {
-      elementoMasComprado = "barbijo";
-      promedioMasComprado = (cantidadBarbijos / comprasBarbijos).toFixed(2);
-    }
-    else {
-      elementoMasComprado = "jabón";
-      promedioMasComprado = (cantidadJabones / comprasJabones).toFixed(2);
-    };
 
-    alert(`La cantidad comprada del jabón más caro fue de ${cantidadJabonesMasCaros} y su fabricante fue ${fabricanteJabonMasCaro}. El producto más comprado fue el ${elementoMasComprado} y el promedio por compra fue de ${promedioMasComprado} unidades. La cantidad de barbijos comprada fue de ${cantidadBarbijos}`);
+  }
+
+  cantidadMasComprada = Math.max(cantidadAlcohol, cantidadBarbijos, cantidadJabon);
+  if(cantidadMasComprada == cantidadAlcohol)
+  {
+    tipoMasComprado = "alcohol";
+    comprasProductoMasComprado = comprasAlcohol;
+  }
+  else
+  {
+    if(cantidadMasComprada == cantidadBarbijos)
+    {
+      tipoMasComprado = "barbijo";
+      comprasProductoMasComprado = comprasBarbijos;
+    }
+    else
+    {
+      tipoMasComprado = "jabón";
+      comprasProductoMasComprado = comprasJabon;
+    }
+  }
+
+  promedioMasComprado = cantidadMasComprada / comprasProductoMasComprado;
+  promedioMasComprado = promedioMasComprado.toFixed(2);
+
+  mensaje = "El producto más comprado fue " + tipoMasComprado + " y en promedio se compraron " + promedioMasComprado + " unidades por compra."
+  if(cantidadAlcohol > 0)
+  {
+    mensaje += "\nEl alcohol más barato comprado costó $" + alcoholMasBaratoPrecio + " se compraron " + alcoholMasBaratoCantidad + " unidades y fue fabricado por " + alcoholMasBaratoFabricante;
+  }
+  else
+  {
+    mensaje += "\nNo se ha comprado alcohol.";
+  }
+  mensaje += "\nLa cantidad de jabón comprada es de " + cantidadJabon;
+  
+  alert(mensaje);
 
 };
+//Alumno: Ferraris Ezequiel - División H
